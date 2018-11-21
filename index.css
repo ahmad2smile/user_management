@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300");
+
+html,
+body,
+#root {
+	font-family: Roboto, "Courier New", Courier, monospace;
+	width: 100%;
+	height: 100%;
+}
+
+/* Responsive Fonts */
+/* Use Fonts in rem, em or percentages for this to be effective */
+/* https://codepen.io/2kool2/pen/ZpLYYo */
+
+:root {
+	font-size: calc(2rem + ((1vw - 0.48rem) * 1.389));
+	/* .48rem = viewportWidthMinimum /100 */
+	/* 1.389rem = 100 * fontSizeDifference / viewportWidthDifference */
+}
+
+@media (min-width: 48em) {
+	:root {
+		font-size: calc(1rem + ((1vw - 0.48rem) * 1.389));
+	}
+}
+
+@media (min-width: 120em) {
+	:root {
+		font-size: 2rem;
+	}
+}
