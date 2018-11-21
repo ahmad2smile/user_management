@@ -1,21 +1,17 @@
 import * as React from "react"
 import injectSheet from "react-jss"
-import { withRouter } from "react-router-dom"
+
+import UserInfo from "./UserInfo/UserInfo"
 
 import { IProps } from "./__types/IProps"
 
 import { styles } from "./styles"
 
-const MerchantProfileComponent = ({
-	match: {
-		params: { id }
-	},
-	classes
-}: IProps) => (
+const MerchantProfileComponent = ({ classes }: IProps) => (
 	<div className={classes.container}>
 		<div>Merchant</div>
-		<div>{id}</div>
+		<UserInfo />
 	</div>
 )
 
-export default withRouter(injectSheet(styles)(MerchantProfileComponent))
+export default injectSheet(styles)(MerchantProfileComponent)

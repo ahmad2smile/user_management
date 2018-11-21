@@ -78,12 +78,12 @@ class EnhancedTable<TRow extends IRow, THead extends IHead> extends React.Compon
 					DefaultBtn={DefaultBtn}
 					SelectedBtn={SelectedBtn}
 					tableTitle={tableTitle}
-					numSelected={selected.length}
+					numSelected={selected ? selected.length : 0}
 				/>
 				<div className={classes.tableWrapper}>
 					<Table className={classes.table}>
 						<EnhancedTableHead
-							numSelected={selected.length}
+							numSelected={selected ? selected.length : 0}
 							columns={header}
 							orderType={orderType}
 							orderBy={orderBy}

@@ -3,8 +3,6 @@ import useSheet from "react-jss"
 // @ts-ignore
 import AtlasAvatar from "@atlaskit/avatar"
 
-import { appBaseUrl } from "../../services/dataService"
-
 import { IProps } from "./__types/IProps"
 
 import { styles } from "./styles/"
@@ -16,7 +14,7 @@ const Avatar = ({ photo, name, size, status, presence, classes }: IProps) => (
 			size={size}
 			status={status}
 			presence={presence}
-			src={photo && `${appBaseUrl}/avatar/profile/${photo}`} // Only send req if photo is not null else assign null
+			src={photo} // Only send req if photo is not null else assign null
 		/>
 	</div>
 )

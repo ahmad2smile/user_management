@@ -14,8 +14,8 @@ export interface IProps<TRow extends IRow, THead extends IHead> extends WithStyl
 	readonly header: ReadonlyArray<THead>
 	readonly rows: ReadonlyArray<TRow>
 	readonly rowsPerPage?: number
-	readonly selected: ReadonlyArray<number>
-	readonly SelectedBtn: React.SFC
+	readonly selected?: ReadonlyArray<number>
+	readonly SelectedBtn?: React.SFC
 	readonly tableTitle: string
 	readonly count: number
 }

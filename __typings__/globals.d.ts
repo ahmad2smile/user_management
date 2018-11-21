@@ -5,6 +5,7 @@ interface IRootState {
 
 interface IMerchants {
 	readonly merchants: ReadonlyArray<IMerchant>
+	readonly selectedMerchant: Partial<IMerchant>
 	readonly merchantsGetRequest: string
 	readonly merchantsGetError: string
 }
@@ -31,6 +32,7 @@ interface IBid {
 	readonly carTitle: string
 	readonly amount: number
 	readonly created: string
+	readonly [k: string]: string | number
 }
 
 interface IAuth {
@@ -43,6 +45,13 @@ interface IAuth {
 interface IUser {
 	readonly id: string
 	readonly name: string
+}
+
+interface ITableHeader {
+	readonly id: string
+	readonly numeric: boolean
+	readonly disablePadding: boolean
+	readonly label: string
 }
 
 /* ------------------------------------------------- */

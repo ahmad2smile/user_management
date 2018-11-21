@@ -7,4 +7,6 @@ export type MerchantsGetSuccessAction = IAction<IMerchantsGetSuccessPayload, Mer
 
 export type MerchantsGetErrorAction = IAction<string, MerchantsTypes>
 
+export type MerchantsGetSelected = IAction<string, MerchantsTypes>
+
 export type MerchantsActions = MerchantsGetAction | MerchantsGetSuccessAction | MerchantsGetErrorAction

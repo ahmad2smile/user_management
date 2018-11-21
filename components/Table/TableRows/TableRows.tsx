@@ -104,4 +104,9 @@ function TableRows<TRow extends IRow, THead extends IHead>({
 	)
 }
 
+// tslint:disable-next-line:no-object-mutation
+TableRows.defaultProps = {
+	selected: []
+}
+
 export default withStyles(styles)(TableRows)

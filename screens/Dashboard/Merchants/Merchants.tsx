@@ -10,7 +10,6 @@ import { merchantsGetRequest } from "../../../appstate/actions/merchants/merchan
 
 import { IProps } from "./__types/IProps"
 import { IState } from "./__types/IState"
-import { ITableHeader } from "./__types/ITableHeader"
 
 import { styles } from "./styles"
 
@@ -99,7 +98,7 @@ class Merchants extends React.Component<IProps, IState> {
 		return (
 			<div className={classes.container}>
 				<Table
-					count={10}
+					count={1000}
 					tableTitle="Merchants"
 					SelectedBtn={SelectedBtn}
 					handleSelectClick={this.handleSelectClick}

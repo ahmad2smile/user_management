@@ -3,8 +3,9 @@ import { MerchantsTypes } from "../../types/merchantsTypes"
 import {
 	MerchantsGetAction,
 	MerchantsGetSuccessAction,
+	IMerchantsGetSuccessPayload,
 	MerchantsGetErrorAction,
-	IMerchantsGetSuccessPayload
+	MerchantsGetSelected
 } from "./__types/IActions"
 
 export function merchantsGetRequest(): MerchantsGetAction {
@@ -24,5 +25,12 @@ export function merchantsGetError(payload: string): MerchantsGetErrorAction {
 	return {
 		payload,
 		type: MerchantsTypes.MERCHANTS_GET_REQUEST_ERROR
+	}
+}
+
+export function merchantsGetSelected(payload: string): MerchantsGetSelected {
+	return {
+		payload,
+		type: MerchantsTypes.MERCHANTS_GET_SELECTED_MERCHANT
 	}
 }
