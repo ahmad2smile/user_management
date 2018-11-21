@@ -3,10 +3,10 @@ import { StyleRules, StyleRulesCallback } from "@material-ui/core/styles/withSty
 
 const styles: StyleRulesCallback = (): StyleRules =>
 	createStyles({
-		root   : {},
+		root: {},
 		toolTip: {
-			display       : "flex",
-			justifyContent: "flex-end"
+			display: "flex",
+			justifyContent: "center"
 		},
 		header: {
 			background: "red"

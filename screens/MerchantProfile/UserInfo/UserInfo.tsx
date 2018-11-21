@@ -78,6 +78,7 @@ class UserInfo extends React.PureComponent<IProps> {
 				<div>
 					<Table
 						count={bids.length}
+						rowsPerPage={5}
 						tableTitle="Bids"
 						onPageChange={this.onPageChange}
 						onRowsPerPageChange={this.onRowsPerPageChange}
