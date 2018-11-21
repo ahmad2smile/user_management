@@ -26,7 +26,8 @@ class Merchants extends React.Component<IProps, IState> {
 		super(props)
 
 		this.state = {
-			selected: []
+			selected: [],
+			currentPage: 0
 		}
 
 		this.onPageChange = this.onPageChange.bind(this)
@@ -37,7 +38,7 @@ class Merchants extends React.Component<IProps, IState> {
 	public componentDidMount() {
 		const { dispatch } = this.props
 
-		dispatch(merchantsGetRequest())
+		dispatch(merchantsGetRequest({}))
 	}
 
 	public handleSelectClick(_event: React.ChangeEvent, id: number) {
@@ -58,18 +59,38 @@ class Merchants extends React.Component<IProps, IState> {
 		this.setState({ selected: newSelected })
 	}
 
-	public onPageChange(_page: number, _rowsPerPage: number) {
-		const { dispatch } = this.props
+	public onPageChange(nextPage: number, rowsPerPage: number) {
+		const { merchants, dispatch } = this.props
+		const { currentPage } = this.state
 
-		this.setState({ selected: [] })
-		dispatch(merchantsGetRequest())
+		this.setState({ selected: [], currentPage: nextPage })
+
+		const onNextPage = nextPage > currentPage
+		const nextOffset = nextPage * rowsPerPage
+
+		const navOutOfRangeOfData = nextOffset >= merchants.length
+
+		onNextPage &&
+			navOutOfRangeOfData &&
+			dispatch(
+				merchantsGetRequest({
+					offset: nextOffset,
+					limit: rowsPerPage
+				})
+			)
 	}
 
-	public onRowsPerPageChange(_page: number, _rowsPerPage: number) {
+	public onRowsPerPageChange(_page: number, rowsPerPage: number) {
 		const { dispatch } = this.props
 
 		this.setState({ selected: [] })
-		dispatch(merchantsGetRequest())
+
+		dispatch(
+			merchantsGetRequest({
+				offset: 0,
+				limit: rowsPerPage
+			})
+		)
 	}
 
 	public formatData(data: ReadonlyArray<IMerchant>) {

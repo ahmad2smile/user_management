@@ -1,6 +1,6 @@
 import { call, takeLatest, put } from "redux-saga/effects"
 
-import { merchantsGetSuccess, merchantsGetError } from "../../actions/merchants/merchantsActions"
+import { merchantsGetSuccess, merchantsGetError, merchantsGetUpdate } from "../../actions/merchants/merchantsActions"
 
 import { getMerchants } from "../../../services/dataService"
 
@@ -8,9 +8,9 @@ import { MerchantsTypes } from "../../types/merchantsTypes"
 
 import { MerchantsGetAction } from "../../actions/merchants/__types/IActions"
 
-export function* merchantsGetSaga(_action: MerchantsGetAction) {
+export function* merchantsGetSaga(action: MerchantsGetAction) {
 	try {
-		const response = yield call(getMerchants)
+		const response = yield call(getMerchants, action.payload)
 
 		const merchants: ReadonlyArray<IMerchant> = response.data.map((d: { readonly [k: string]: string }) => {
 			// tslint:disable-next-line:readonly-keyword
@@ -24,7 +24,11 @@ export function* merchantsGetSaga(_action: MerchantsGetAction) {
 			return formatedData
 		})
 
-		yield put(merchantsGetSuccess({ merchants }))
+		if (action.payload.offset) {
+			yield put(merchantsGetUpdate(merchants))
+		} else {
+			yield put(merchantsGetSuccess(merchants))
+		}
 	} catch (err) {
 		yield put(merchantsGetError(err))
 	}

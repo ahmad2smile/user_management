@@ -4,7 +4,8 @@ import {
 	MerchantsActions,
 	MerchantsGetSuccessAction,
 	MerchantsGetErrorAction,
-	MerchantsGetSelected
+	MerchantsGetSelected,
+	MerchantsGetUpdateAction
 } from "../../actions/merchants/__types/IActions"
 
 import { API } from "../../../__typings__/api"
@@ -17,29 +18,39 @@ export const initialState: IMerchants = {
 }
 
 export function merchantsReducer(state: IMerchants = initialState, action: MerchantsActions): IMerchants {
-	return (
-		{
-			[MerchantsTypes.MERCHANTS_GET_REQUEST]: {
+	switch (action.type) {
+		case MerchantsTypes.MERCHANTS_GET_REQUEST:
+			return {
 				...state,
 				merchantsGetRequest: API.REQUEST_PENDING
-			},
-			[MerchantsTypes.MERCHANTS_GET_REQUEST_SUCCESS]: {
+			}
+		case MerchantsTypes.MERCHANTS_GET_REQUEST_SUCCESS:
+			return {
 				...state,
-				...(action as MerchantsGetSuccessAction).payload,
+				merchants: (action as MerchantsGetSuccessAction).payload,
 				merchantsGetRequest: API.REQUEST_SUCCESS
-			},
-			[MerchantsTypes.MERCHANTS_GET_REQUEST_ERROR]: {
+			}
+		case MerchantsTypes.MERCHANTS_GET_REQUEST_UPDATE:
+			return {
+				...state,
+				merchants: [...state.merchants, ...(action as MerchantsGetUpdateAction).payload],
+				merchantsGetRequest: API.REQUEST_SUCCESS
+			}
+		case MerchantsTypes.MERCHANTS_GET_REQUEST_ERROR:
+			return {
 				...state,
 				merchantsGetError: (action as MerchantsGetErrorAction).payload,
 				merchantsGetRequest: API.REQUEST_ERROR
-			},
-			[MerchantsTypes.MERCHANTS_GET_SELECTED_MERCHANT]: {
+			}
+		case MerchantsTypes.MERCHANTS_GET_SELECTED_MERCHANT:
+			return {
 				...state,
 				selectedMerchant: state.merchants.find(
 					(merchant: IMerchant) => merchant.id.value === (action as MerchantsGetSelected).payload
 				),
 				merchantsGetRequest: API.REQUEST_ERROR
 			}
-		}[action.type] || state
-	)
+		default:
+			return state
+	}
 }

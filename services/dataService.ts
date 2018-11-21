@@ -28,8 +28,8 @@ export function loginUser(credentials: string) {
 	return api.post("/user/login", credentials)
 }
 
-export function getMerchants() {
-	return api.get("/merchants?&_limit=10")
+export function getMerchants({ limit = 10, offset = 0 }) {
+	return api.get(`/merchants?_page=${offset}&_limit=${limit}`)
 }
 
 export function createNewMerchant(payload: string, token: string) {

@@ -5,11 +5,11 @@ import Merchants from "./Merchants/Merchants"
 
 import { IProps } from "./__types/IProps"
 
-import styles from "./styles"
+import { styles } from "./styles"
 
 const DashboardComponent = ({ classes }: IProps) => (
 	<div className={classes.container}>
-		<h1>Dashboard Page</h1>
+		<h2>Dashboard</h2>
 		<div>
 			<Merchants />
 		</div>

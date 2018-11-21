@@ -54,7 +54,7 @@ class EnhancedTable<TRow extends IRow, THead extends IHead> extends React.Compon
 
 		onRowsPerPageChange(page, rowsPerPage)
 
-		this.setState({ rowsPerPage })
+		this.setState({ page: 0, rowsPerPage })
 	}
 
 	public render(): JSX.Element {

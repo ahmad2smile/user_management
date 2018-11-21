@@ -9,6 +9,7 @@
     ],
     "rules": {
         "no-empty": false,
+        "no-unused-expression": false,
         "only-arrow-functions": false,
         "no-let": false,
         "no-magic-numbers": false,
