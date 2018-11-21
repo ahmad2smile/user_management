@@ -15,7 +15,6 @@ const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error 
 		case "select":
 			return (
 				<CheckboxSelect
-					// tslint:disable-next-line:jsx-no-lambda
 					onBlur={onBlur}
 					styles={selectStyles}
 					{...restInput}
@@ -33,6 +32,17 @@ const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error 
 			return <Checkbox onBlur={onBlur} {...restInput} {...rest} />
 		default:
 			return <input onBlur={onBlur} {...restInput} {...rest} className={classes.input} />
+	}
+}
+
+// tslint:disable-next-line:no-object-mutation
+InputField.defaultProps = {
+	// tslint:disable-next-line:no-empty
+	input: { onBlur: () => {}, onChange: () => {} },
+	meta: {
+		touched: false,
+		error: "",
+		warning: ""
 	}
 }
 

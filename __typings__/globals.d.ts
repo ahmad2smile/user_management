@@ -11,13 +11,26 @@ interface IMerchants {
 
 interface IMerchant {
 	readonly id: ITableData
-	readonly name: ITableData
-	readonly [key: string]: ITableData
+	readonly firstname: ITableData
+	readonly lastname: ITableData
+	readonly avatarUrl: ITableData
+	readonly email: ITableData
+	readonly phone: ITableData
+	readonly hasPremium: ITableData
+	readonly bids: ReadonlyArray<IBid>
+	readonly [key: string]: ITableData | string | number
 }
 
 interface ITableData {
 	readonly component: React.ReactNode
-	readonly value: number | string
+	readonly value: number | string | boolean
+}
+
+interface IBid {
+	readonly id: string
+	readonly carTitle: string
+	readonly amount: number
+	readonly created: string
 }
 
 interface IAuth {

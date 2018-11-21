@@ -1,20 +1,25 @@
 import * as React from "react"
 import { connect } from "react-redux"
+import { Link } from "react-router-dom"
+import injectSheet from "react-jss"
 
 import Table from "../../../components/Table/Table"
 import SelectedBtn from "./SelectedBtn/SelectedBtn"
 
+import { merchantsGetRequest } from "../../../appstate/actions/merchants/merchantsActions"
+
 import { IProps } from "./__types/IProps"
 import { IState } from "./__types/IState"
 import { ITableHeader } from "./__types/ITableHeader"
-import { merchantsGetRequest } from "../../../appstate/actions/merchants/merchantsActions"
+
+import { styles } from "./styles"
 
 const header: ReadonlyArray<ITableHeader> = [
-	{ id: "name", numeric: false, disablePadding: false, label: "Company Name" },
-	{ id: "billing_type", numeric: false, disablePadding: false, label: "Billing Method" },
-	{ id: "trialLength", numeric: true, disablePadding: false, label: "Trial Length" },
-	{ id: "isTrial", numeric: true, disablePadding: false, label: "Is On Trial" },
-	{ id: "isActive", numeric: true, disablePadding: false, label: "Active" }
+	{ id: "firstname", numeric: false, disablePadding: false, label: "Firstname" },
+	{ id: "lastname", numeric: false, disablePadding: false, label: "Lastname" },
+	{ id: "email", numeric: false, disablePadding: false, label: "Email" },
+	{ id: "phone", numeric: false, disablePadding: false, label: "Phone" },
+	{ id: "hasPremium", numeric: false, disablePadding: false, label: "Premium" }
 ]
 
 class Merchants extends React.Component<IProps, IState> {
@@ -28,6 +33,12 @@ class Merchants extends React.Component<IProps, IState> {
 		this.onPageChange = this.onPageChange.bind(this)
 		this.handleSelectClick = this.handleSelectClick.bind(this)
 		this.onRowsPerPageChange = this.onRowsPerPageChange.bind(this)
+	}
+
+	public componentDidMount() {
+		const { dispatch } = this.props
+
+		dispatch(merchantsGetRequest())
 	}
 
 	public handleSelectClick(_event: React.ChangeEvent, id: number) {
@@ -62,22 +73,41 @@ class Merchants extends React.Component<IProps, IState> {
 		dispatch(merchantsGetRequest())
 	}
 
+	public formatData(data: ReadonlyArray<IMerchant>) {
+		return data.map(({ id, firstname, lastname, hasPremium, ...rest }) => ({
+			...rest,
+			id,
+			firstname: {
+				...firstname,
+				component: <Link to={`merchants/${id.value}`}>{firstname.value}</Link>
+			},
+			lastname: {
+				...lastname,
+				component: <Link to={`merchants/${id.value}`}>{lastname.value}</Link>
+			},
+			hasPremium: {
+				...hasPremium,
+				component: <div>{hasPremium.value ? "Premium" : "Trial"}</div>
+			}
+		}))
+	}
+
 	public render() {
-		const { merchants } = this.props
+		const { merchants, classes } = this.props
 		const { selected } = this.state
 
 		return (
-			<div>
+			<div className={classes.container}>
 				<Table
 					count={10}
-					tableTitle="Companies"
+					tableTitle="Merchants"
 					SelectedBtn={SelectedBtn}
 					handleSelectClick={this.handleSelectClick}
 					onPageChange={this.onPageChange}
 					onRowsPerPageChange={this.onRowsPerPageChange}
 					selected={selected}
 					header={header}
-					rows={merchants}
+					rows={this.formatData(merchants)}
 				/>
 			</div>
 		)
@@ -86,4 +116,4 @@ class Merchants extends React.Component<IProps, IState> {
 
 export default connect(({ merchants }: IRootState) => ({
 	merchants: merchants.merchants
-}))(Merchants)
+}))(injectSheet(styles)(Merchants))

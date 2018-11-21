@@ -20,7 +20,7 @@ import styles from "./styles"
 class EnhancedTable<TRow extends IRow, THead extends IHead> extends React.Component<IProps<TRow, THead>, IState> {
 	public readonly state: IState = {
 		orderType: "asc",
-		orderBy: "name" as string,
+		orderBy: "id" as string,
 		page: 0,
 		rowsPerPage: this.props.rowsPerPage || TableValues.defaultRowsPerPage
 	}

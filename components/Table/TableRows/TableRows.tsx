@@ -63,29 +63,26 @@ function TableRows<TRow extends IRow, THead extends IHead>({
 			{stableSort(rows, getSorting(orderType, orderBy))
 				.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 				.map((row: TRow) => {
-					const isSelected: boolean = selected.includes(row.id.value)
+					const isSelected: boolean = selected.includes(row.id.value as React.ReactText)
 					const rowNames: ReadonlyArray<string> = columns.map((c: THead) => c.id)
 
 					return (
 						<TableRow
-							key={row.id.value}
+							key={row.id.value as React.ReactText}
 							hover={true}
 							tabIndex={-1}
 							role="checkbox"
 							selected={isSelected}
 							aria-checked={isSelected}
-							onClick={rowClickHandler(handleSelectClick, row.id.value)}
+							onClick={rowClickHandler(handleSelectClick, row.id.value as React.ReactText)}
 						>
 							{!!handleSelectClick && (
 								<TableCell padding="checkbox">
 									<InputField inputType={InputTypes.Checkbox} checked={isSelected} />
 								</TableCell>
 							)}
-							<TableCell className={classes.tableCell} component="th" scope="row" padding="none">
-								{row.name.component}
-							</TableCell>
 							{rowNames
-								.filter((rowName: string) => rowName !== "id" && rowName !== "name")
+								.filter((rowName: string) => rowName !== "id")
 								.map((rowName: string, i: number) => {
 									const isNumeric: boolean = columns.find((c: THead) => c.id === rowName).numeric
 

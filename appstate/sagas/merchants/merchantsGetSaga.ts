@@ -12,19 +12,17 @@ export function* merchantsGetSaga(_action: MerchantsGetAction) {
 	try {
 		const response = yield call(getMerchants)
 
-		const merchants: ReadonlyArray<IMerchant> = response.store.merchants.map(
-			(d: { readonly [k: string]: string }) => {
-				// tslint:disable-next-line:readonly-keyword
-				const formatedData: { [k: string]: ITableData } = {}
+		const merchants: ReadonlyArray<IMerchant> = response.data.map((d: { readonly [k: string]: string }) => {
+			// tslint:disable-next-line:readonly-keyword
+			const formatedData: { [k: string]: ITableData | string } = {}
 
-				Object.keys(d).forEach((k: string) => {
-					// tslint:disable-next-line:no-object-mutation
-					formatedData[k] = { value: d[k], component: d[k] }
-				})
+			Object.keys(d).forEach((k: string) => {
+				// tslint:disable-next-line:no-object-mutation
+				formatedData[k] = k === "bids" ? d[k] : { value: d[k], component: d[k] }
+			})
 
-				return formatedData
-			}
-		)
+			return formatedData
+		})
 
 		yield put(merchantsGetSuccess({ merchants }))
 	} catch (err) {

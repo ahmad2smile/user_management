@@ -7,15 +7,13 @@ import { IProps } from "./__types/IProps"
 
 import styles from "./styles"
 
-const DashboardComponent = ({ classes }: IProps) => {
-	return (
-		<div className={classes.container}>
-			<h1>Dashboard Page</h1>
-			<div>
-				<Merchants />
-			</div>
+const DashboardComponent = ({ classes }: IProps) => (
+	<div className={classes.container}>
+		<h1>Dashboard Page</h1>
+		<div>
+			<Merchants />
 		</div>
-	)
-}
+	</div>
+)
 
 export default useSheet(styles)(DashboardComponent)

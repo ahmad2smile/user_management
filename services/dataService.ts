@@ -4,8 +4,8 @@ import axios from "axios"
 
 export const appBaseUrl = process.env.HOST_ADDRESS
 
-const apiV2 = axios.create({
-	baseURL: `${appBaseUrl}/api/v2`,
+const api = axios.create({
+	baseURL: appBaseUrl,
 	timeout: 15000,
 	headers: {
 		"Content-Type": "application/json"
@@ -25,29 +25,29 @@ export function runGqlQueries(query: string, token: string) {
 }
 
 export function loginUser(credentials: string) {
-	return apiV2.post("/user/login", credentials)
+	return api.post("/user/login", credentials)
 }
 
 export function getMerchants() {
-	return apiV2.post("/users")
+	return api.get("/merchants?&_limit=10")
 }
 
 export function createNewMerchant(payload: string, token: string) {
-	apiV2.defaults.headers = { "x-access-token": token }
+	api.defaults.headers = { "x-access-token": token }
 
-	return apiV2.post("/merchants", payload)
+	return api.post("/merchants", payload)
 }
 
 export function updateMerchant(payload: { readonly [key: string]: string }, token: string) {
-	apiV2.defaults.headers = { "x-access-token": token }
+	api.defaults.headers = { "x-access-token": token }
 	const { id, data } = payload
 
-	return apiV2.put(`/merchants/${id}`, data)
+	return api.put(`/merchants/${id}`, data)
 }
 
 export function deleteMerchant(payload: { readonly [key: string]: string }, token: string) {
-	apiV2.defaults.headers = { "x-access-token": token }
+	api.defaults.headers = { "x-access-token": token }
 	const { id } = payload
 
-	return apiV2.delete(`/merchants/${id}`)
+	return api.delete(`/merchants/${id}`)
 }

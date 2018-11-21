@@ -1,5 +1,4 @@
-export interface IRow {
-	readonly id: ITableData
-	readonly name: ITableData
-	readonly [key: string]: ITableData
+export interface IRow extends IMerchant {
+	// tslint:disable-next-line:no-any
+	readonly [key: string]: any
 }
