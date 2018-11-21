@@ -19,9 +19,9 @@ import styles from "./styles"
 
 class EnhancedTable<TRow extends IRow, THead extends IHead> extends React.Component<IProps<TRow, THead>, IState> {
 	public readonly state: IState = {
-		orderType  : "asc",
-		orderBy    : "name" as string,
-		page       : 0,
+		orderType: "asc",
+		orderBy: "name" as string,
+		page: 0,
 		rowsPerPage: this.props.rowsPerPage || TableValues.defaultRowsPerPage
 	}
 
@@ -30,7 +30,7 @@ class EnhancedTable<TRow extends IRow, THead extends IHead> extends React.Compon
 
 		this.setState({
 			orderType: orderBy === orderByUpdate && orderType === "desc" ? "asc" : "desc",
-			orderBy  : orderByUpdate
+			orderBy: orderByUpdate
 		})
 	}
 
@@ -57,7 +57,7 @@ class EnhancedTable<TRow extends IRow, THead extends IHead> extends React.Compon
 		this.setState({ rowsPerPage })
 	}
 
-	public render (): JSX.Element {
+	public render(): JSX.Element {
 		const {
 			rows,
 			header,
@@ -81,7 +81,7 @@ class EnhancedTable<TRow extends IRow, THead extends IHead> extends React.Compon
 					numSelected={selected.length}
 				/>
 				<div className={classes.tableWrapper}>
-					<Table className={classes.table} aria-labelledby="tableTitle">
+					<Table className={classes.table}>
 						<EnhancedTableHead
 							numSelected={selected.length}
 							columns={header}

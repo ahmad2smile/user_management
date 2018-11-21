@@ -10,8 +10,14 @@ interface IMerchants {
 }
 
 interface IMerchant {
-	readonly id: string
-	readonly name: string
+	readonly id: ITableData
+	readonly name: ITableData
+	readonly [key: string]: ITableData
+}
+
+interface ITableData {
+	readonly component: React.ReactNode
+	readonly value: number | string
 }
 
 interface IAuth {

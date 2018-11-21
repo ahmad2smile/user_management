@@ -40,7 +40,7 @@ function desc<TRow extends IRow>(a: TRow, b: TRow, orderBy: string): number {
 
 function rowClickHandler(
 	handleClick: Function,
-	id: number
+	id: number | string
 ): ((event: React.MouseEvent<HTMLTableRowElement>) => void) | undefined {
 	return (event: React.MouseEvent<HTMLTableRowElement>): Function => handleClick && handleClick(event, id)
 }

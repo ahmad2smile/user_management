@@ -27,7 +27,9 @@ const EnhancedTableToolbar: React.SFC<IProps> = ({
 			)}
 		</div>
 		<div className={classes.spacer} />
-		<div className={classes.actions}>{numSelected > 0 ? <SelectedBtn /> : <DefaultBtn />}</div>
+		<div className={classes.actions}>
+			{numSelected > 0 ? SelectedBtn && <SelectedBtn /> : DefaultBtn && <DefaultBtn />}
+		</div>
 	</Toolbar>
 )
 
