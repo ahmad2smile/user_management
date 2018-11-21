@@ -1,3 +1,3 @@
-# Merchant Management Sys
+# React Next TS Boilerplate
 
 #### React Typescript
