@@ -1,18 +1,14 @@
 import * as React from "react"
 import { connect } from "react-redux"
-import useSheet from "react-jss"
 import { withRouter } from "react-router-dom"
 import Paper from "@material-ui/core/Paper"
 
-import Avatar from "../../../components/Avatar/Avatar"
+import UserProfile from "./../../../components/UserProfile/UserProfile"
 import Table from "../../../components/Table/Table"
 
 import { merchantsGetSelected } from "../../../appstate/actions/merchants/merchantsActions"
 
 import { IProps } from "./__types/IProps"
-import { SizeValue, PresenceValue } from "../../../components/Avatar/__types/AvatarValues"
-
-import { styles } from "./styles/"
 
 const header: ReadonlyArray<ITableHeader> = [
 	{ id: "carTitle", numeric: false, disablePadding: false, label: "Car" },
@@ -20,7 +16,7 @@ const header: ReadonlyArray<ITableHeader> = [
 	{ id: "created", numeric: false, disablePadding: false, label: "Date" }
 ]
 
-class UserInfo extends React.PureComponent<IProps> {
+class UserInfo extends React.Component<IProps> {
 	public componentDidMount() {
 		const {
 			match: {
@@ -40,7 +36,7 @@ class UserInfo extends React.PureComponent<IProps> {
 		return data // tslint:disable-next-line:no-any
 			.map((d: any) => {
 				// tslint:disable-next-line:readonly-keyword
-				const formatedData: { [k: string]: ITableData | string } = {}
+				const formatedData: { [k: string]: ITableData } = {}
 
 				Object.keys(d).forEach((k: string) => {
 					// tslint:disable-next-line:no-object-mutation
@@ -53,28 +49,19 @@ class UserInfo extends React.PureComponent<IProps> {
 
 	public render() {
 		const {
-			selectedMerchant: { avatarUrl, firstname, lastname, email, phone, hasPremium, bids },
-			classes
+			selectedMerchant: { avatarUrl, firstname, lastname, email, phone, hasPremium, bids }
 		} = this.props
 
 		return (
-			<Paper square={true} className={classes.root}>
-				<div className={classes.profileContainer}>
-					<Avatar photo={avatarUrl.value as string} size={SizeValue.xlarge} presence={PresenceValue.online} />
-					<div className={classes.content}>
-						<div className={classes.upperContainer}>
-							<div className={classes.nameContainer}>
-								<div className={classes.name}>{`${firstname.value} ${lastname.value}`}</div>
-								<div className={classes.position}>{hasPremium.value ? "Premium" : "Trial"}</div>
-							</div>
-						</div>
-						<div className={classes.lowerContainer}>
-							<div className={classes.contact}>
-								{phone.value || "Cell: N/A,"} {email.value}
-							</div>
-						</div>
-					</div>
-				</div>
+			<Paper square={true}>
+				<UserProfile
+					avatarUrl={avatarUrl}
+					firstname={firstname}
+					lastname={lastname}
+					email={email}
+					phone={phone}
+					hasPremium={hasPremium}
+				/>
 				<div>
 					<Table
 						count={bids.length}
@@ -93,4 +80,4 @@ class UserInfo extends React.PureComponent<IProps> {
 
 export default connect(({ merchants }: IRootState) => ({
 	selectedMerchant: merchants.selectedMerchant
-}))(withRouter(useSheet(styles)(UserInfo)))
+}))(withRouter(UserInfo))

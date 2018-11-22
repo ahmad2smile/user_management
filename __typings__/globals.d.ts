@@ -11,15 +11,15 @@ interface IMerchants {
 }
 
 interface IMerchant {
-	readonly id: ITableData
-	readonly firstname: ITableData
-	readonly lastname: ITableData
-	readonly avatarUrl: ITableData
-	readonly email: ITableData
-	readonly phone: ITableData
-	readonly hasPremium: ITableData
+	readonly id: string
+	readonly firstname: string
+	readonly lastname: string
+	readonly avatarUrl: string
+	readonly email: string
+	readonly phone: string
+	readonly hasPremium: boolean
 	readonly bids: ReadonlyArray<IBid>
-	readonly [key: string]: ITableData | string | number
+	readonly [key: string]: boolean | string | number
 }
 
 interface ITableData {

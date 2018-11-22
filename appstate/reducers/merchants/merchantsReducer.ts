@@ -27,7 +27,11 @@ export function merchantsReducer(state: IMerchants = initialState, action: Merch
 		case MerchantsTypes.MERCHANTS_GET_REQUEST_SUCCESS:
 			return {
 				...state,
-				merchants: (action as MerchantsGetSuccessAction).payload,
+				merchants: [...(action as MerchantsGetSuccessAction).payload],
+				selectedMerchant: {
+					...((action as MerchantsGetSuccessAction).payload[0] &&
+						(action as MerchantsGetSuccessAction).payload[0])
+				},
 				merchantsGetRequest: API.REQUEST_SUCCESS
 			}
 		case MerchantsTypes.MERCHANTS_GET_REQUEST_UPDATE:
@@ -46,7 +50,7 @@ export function merchantsReducer(state: IMerchants = initialState, action: Merch
 			return {
 				...state,
 				selectedMerchant: state.merchants.find(
-					(merchant: IMerchant) => merchant.id.value === (action as MerchantsGetSelected).payload
+					(merchant: IMerchant) => merchant.id === (action as MerchantsGetSelected).payload
 				),
 				merchantsGetRequest: API.REQUEST_ERROR
 			}

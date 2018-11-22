@@ -11,6 +11,7 @@
         "no-empty": false,
         "no-unused-expression": false,
         "only-arrow-functions": false,
+        "jsx-no-lambda": false,
         "no-let": false,
         "no-magic-numbers": false,
         "prefer-function-over-method": false,

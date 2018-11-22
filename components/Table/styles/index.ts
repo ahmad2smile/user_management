@@ -1,11 +1,11 @@
 import { Theme } from "@material-ui/core"
-import { StyleRules } from "@material-ui/core/styles"
+import { Styles } from "react-jss"
 
 import { TableValues } from "../__types/TableValues"
 
-export default (theme: Theme): StyleRules => ({
+export const styles = (theme: Theme): Styles => ({
 	root: {
-		width    : "100%",
+		width: "100%",
 		marginTop: theme.spacing.unit * TableValues.marginTopMultiplier
 	},
 	table: {

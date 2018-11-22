@@ -11,13 +11,11 @@ import TableRows from "./TableRows/TableRows"
 
 import { IProps } from "./__types/IProps"
 import { IState } from "./__types/IState"
-import { IRow } from "./__types/IRow"
-import { IHead } from "./__types/IHead"
 import { TableValues } from "./__types/TableValues"
 
-import styles from "./styles"
+import { styles } from "./styles"
 
-class EnhancedTable<TRow extends IRow, THead extends IHead> extends React.Component<IProps<TRow, THead>, IState> {
+class EnhancedTable extends React.Component<IProps, IState> {
 	public readonly state: IState = {
 		orderType: "asc",
 		orderBy: "id" as string,

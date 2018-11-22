@@ -1,20 +1,18 @@
-import { WithStyles } from "@material-ui/core"
+import { StyledComponentProps } from "react-jss"
 
 import { IRow } from "./IRow"
 import { IHead } from "./IHead"
 
-import styles from "../styles/"
-
-export interface IProps<TRow extends IRow, THead extends IHead> extends WithStyles<typeof styles> {
+export interface IProps extends StyledComponentProps {
 	readonly DefaultBtn?: React.SFC
 	readonly handleSelectAllClick?: React.ChangeEventHandler
-	readonly handleSelectClick?: (event: React.ChangeEvent, id: number) => void
+	readonly handleSelectClick?: (event: React.ChangeEvent, id: string) => void
 	readonly onPageChange?: (page: number, rowsPerPage: number) => void
 	readonly onRowsPerPageChange?: (page: number, rowsPerPage: number) => void
-	readonly header: ReadonlyArray<THead>
-	readonly rows: ReadonlyArray<TRow>
+	readonly header: ReadonlyArray<IHead>
+	readonly rows: ReadonlyArray<IRow>
 	readonly rowsPerPage?: number
-	readonly selected?: ReadonlyArray<number>
+	readonly selected?: ReadonlyArray<string>
 	readonly SelectedBtn?: React.SFC
 	readonly tableTitle: string
 	readonly count: number
