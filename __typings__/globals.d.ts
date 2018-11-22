@@ -8,6 +8,8 @@ interface IMerchants {
 	readonly selectedMerchant: Partial<IMerchant>
 	readonly merchantsGetRequest: string
 	readonly merchantsGetError: string
+	readonly merchantsDeleteState: API
+	readonly merchantsDeleteError: string
 }
 
 interface IMerchant {
@@ -60,4 +62,14 @@ interface ITableHeader {
 interface IAction<P, T> {
 	readonly payload?: P
 	readonly type: T
+}
+
+/* ------------------------------------------------- */
+// API dup cause can't import in global.d.ts
+/* ------------------------------------------------- */
+enum API {
+	NOT_REQUESTED = "API_NOT_REQUESTED",
+	REQUEST_PENDING = "API_REQUEST_PENDING",
+	REQUEST_SUCCESS = "API_REQUEST_SUCCESS",
+	REQUEST_ERROR = "API_REQUEST_ERROR"
 }

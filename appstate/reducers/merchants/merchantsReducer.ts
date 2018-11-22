@@ -5,7 +5,8 @@ import {
 	MerchantsGetSuccessAction,
 	MerchantsGetErrorAction,
 	MerchantsGetSelected,
-	MerchantsGetUpdateAction
+	MerchantsGetUpdateAction,
+	MerchantsDeleteErrorAction
 } from "../../actions/merchants/__types/IActions"
 
 import { API } from "../../../__typings__/api"
@@ -14,7 +15,9 @@ export const initialState: IMerchants = {
 	merchants: [],
 	selectedMerchant: {},
 	merchantsGetRequest: API.NOT_REQUESTED,
-	merchantsGetError: ""
+	merchantsGetError: "",
+	merchantsDeleteState: API.NOT_REQUESTED,
+	merchantsDeleteError: ""
 }
 
 export function merchantsReducer(state: IMerchants = initialState, action: MerchantsActions): IMerchants {
@@ -53,6 +56,22 @@ export function merchantsReducer(state: IMerchants = initialState, action: Merch
 					(merchant: IMerchant) => merchant.id === (action as MerchantsGetSelected).payload
 				),
 				merchantsGetRequest: API.REQUEST_ERROR
+			}
+		case MerchantsTypes.MERCHANTS_DELETE_REQUEST:
+			return {
+				...state,
+				merchantsDeleteState: API.REQUEST_PENDING
+			}
+		case MerchantsTypes.MERCHANTS_DELETE_REQUEST_SUCCESS:
+			return {
+				...state,
+				merchantsDeleteState: API.REQUEST_SUCCESS
+			}
+		case MerchantsTypes.MERCHANTS_DELETE_REQUEST_ERROR:
+			return {
+				...state,
+				merchantsDeleteError: (action as MerchantsDeleteErrorAction).payload,
+				merchantsDeleteState: API.REQUEST_ERROR
 			}
 		default:
 			return state

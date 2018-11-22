@@ -32,6 +32,12 @@ export function getMerchants({ limit = 10, offset = 0 }) {
 	return api.get(`/merchants?_page=${offset}&_limit=${limit}`)
 }
 
+export function deleteMerchant({ id, token }: { readonly [key: string]: string }) {
+	api.defaults.headers = { "x-access-token": token }
+
+	return api.delete(`/merchants/${id}`)
+}
+
 export function createNewMerchant(payload: string, token: string) {
 	api.defaults.headers = { "x-access-token": token }
 
@@ -43,11 +49,4 @@ export function updateMerchant(payload: { readonly [key: string]: string }, toke
 	const { id, data } = payload
 
 	return api.put(`/merchants/${id}`, data)
-}
-
-export function deleteMerchant(payload: { readonly [key: string]: string }, token: string) {
-	api.defaults.headers = { "x-access-token": token }
-	const { id } = payload
-
-	return api.delete(`/merchants/${id}`)
 }

@@ -18,47 +18,6 @@
       ]
     },
     {
-      "id": "c27fc03ab97b8a70521f5ca868e6e0fc",
-      "firstname": "Ches",
-      "lastname": "Steeples",
-      "email": "csteeples1@godaddy.com",
-      "phone": "634-343-3670",
-      "avatarUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKnSURBVDjLlZJbSNNhGMaFroKCbgqCHW37W24tT6mFRZq1sougqIzwQoKoCyMxSMWyZkV4KkemCUtJcSibkznn1A3pNGYTNY+bOptb2g42TzS1kU/fAodRZl088H3wPr/vfd/vCQIQ9D8aaaJUg3Kuz1AarPDfNzYoqe0mJRVKjNtMSm6eVRUBd3MiWvLYvg0BlhbqOTHahhXUHHn1u029H/rH7BV9ER/yHFbTugBi5I6qqUVnTxqWXFosO1sx25UOV1M8BsrDoMxl5a7W/sl81tpxAO6hfHxzqTHXfR6eNwlwKnhwNMbAoTkKtYhl+g1AjDuJ2qeMyViw1mHJ/hJzxiTMvI3HtO4g3JpIuFQCuLQn0VXM8QUAoyqKS4xTZNYVd/8d+GaN+Gq5D7deCKfuMCabYzBWuxd2GR/ORtJF6wl0PAheDgCG5Vytu+8clh0SeCcy4TWlYrH/DFyv4jFaH46hSh4+lFGwSkN+jjGlPo7GbJYtAOir4kzOW65h3iLC+xo+eutDMVgXjTEipyYaxhIOup/sgr2WA3fbMUzI4lB3kykLADqfBleMqOLgMedgoOE0VPdioRMfgbaAjY8yATytYegTs2GRMOFoSUTPMx5qrjOEvyzxdTFb3yONIF1kQ3FLAK+1EF96M6HJ56OziIGZZooAWGQfJEC32Z61vxY4tD1kmw1V4TC8uIBxXQa84yKMqC6iJGUrdHd3YEHJha3hEKQ3mIN/BPhFAtKgK96HtsJYKDJ50JcloPTSFjxK2oxuMQ0WaRSqrtIn1gX4Jc9mCeVZTOhJ4uyGU/j8TgiDZA8+qXejt0yAisv0zr8CViXNYIqk6QzoCngwV0fBXBmJpqwQlKbQRP8E8Ks6jbFJcoWeU55Kd4pTaNMlybR2cTKNtbbmB+pfvh6cSOd2AAAAAElFTkSuQmCC",
-      "hasPremium": true,
-      "bids": [
-        {
-          "id": "422d5a957a4d69d9c3afd27626eec811",
-          "carTitle": "Elantra",
-          "amount": "$9778.49",
-          "created": "2018-05-12"
-        },
-        {
-          "id": "616e9e80b584929e6d33a972f44e6f5c",
-          "carTitle": "Quest",
-          "amount": "$9561.52",
-          "created": "2018-08-11"
-        },
-        {
-          "id": "9f315d2855597b18842ef95fd5fccb62",
-          "carTitle": "Catera",
-          "amount": "$6187.05",
-          "created": "2018-09-22"
-        },
-        {
-          "id": "e5625e3354e956197c50727c5b25c329",
-          "carTitle": "Millenia",
-          "amount": "$6726.98",
-          "created": "2018-01-02"
-        },
-        {
-          "id": "61ee84c6c151af7de2ad5ed44ef50106",
-          "carTitle": "Starion",
-          "amount": "$6048.21",
-          "created": "2018-05-25"
-        }
-      ]
-    },
-    {
       "id": "27b4eaa932184c44a5ff88d148c1d7ba",
       "firstname": "Augusta",
       "lastname": "Jockle",
@@ -136,35 +95,6 @@
           "carTitle": "Ram 1500 Club",
           "amount": "$9372.50",
           "created": "2018-09-18"
-        }
-      ]
-    },
-    {
-      "id": "0fadb58348f3775d82186ec893cc032b",
-      "firstname": "Augy",
-      "lastname": "Lisett",
-      "email": "alisett5@census.gov",
-      "phone": "537-582-2594",
-      "avatarUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAE0SURBVDjLtZHPSgJRGMXdzmPM88w+gqBF0KZF0CIIstkkhVhSIGFYYWHSHxKmCSdhYAiCIEJTk4ibNJbUA1jjXDenMy+gzkSLD+7i/s4533diAGJ/mVCfs05fzdieEVpg76avENYJe1uVH4QSIKwRFqUHH3ZzgI3y93gC+VtfJWyc3fuw6hL2k4T1KJG8GiFQuJMKYZ2wZ9YknNYAlYZEmW+zKrF22RsuQFgQBmODOyPYOYgdOAdwwughcgsja1w56WocwcFy8QNLhQ4WD10sHLQxnxOYy75gNvM8PAFhhbBO2Nu1PlF0vrB/3cWO+Y70hYuZ7dZ4K9BZpbOROHWxWeogdf6G1eM2ptONcDdgbI2xRfzoFfG8wFSqHv6IjK3QWSfsTSZr0VsgrE6sV43/qzHK/AJ0lPqXO1KzBQAAAABJRU5ErkJggg==",
-      "hasPremium": true,
-      "bids": [
-        {
-          "id": "78681b34f115499f21bbbce6beed50bb",
-          "carTitle": "Corolla",
-          "amount": "$6129.65",
-          "created": "2018-08-03"
-        },
-        {
-          "id": "87aaf019b8fcc4d09240aa274e0e997d",
-          "carTitle": "Villager",
-          "amount": "$8257.96",
-          "created": "2018-10-23"
-        },
-        {
-          "id": "b3031af56c8f4b19b3b37982bbb4fbec",
-          "carTitle": "Prizm",
-          "amount": "$6503.01",
-          "created": "2018-04-25"
         }
       ]
     },
@@ -264,41 +194,6 @@
           "carTitle": "Boxster",
           "amount": "$8816.03",
           "created": "2018-05-31"
-        }
-      ]
-    },
-    {
-      "id": "c58faeb4bde0e4741e106371fb93c0b0",
-      "firstname": "Borg",
-      "lastname": "Oldacre",
-      "email": "boldacre9@adobe.com",
-      "phone": "698-879-0427",
-      "avatarUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ0SURBVDjLjZPLa1NREIe/+0jaNE0VTRvBF1YQwRciUgpCQXwt3AhiVz66ceXSpYL4Nyi4kQiuruLGR32gVBeKithWUatUW6pR21KjJmma3HNmXFy9tQrigbMYmPmdb35zxlFVBgYGdpVun75upgqY8RF25Ic6+L8z4fT396+31j6QcCbtYZk8c5htZ1/8V7Xv+x1+EARDnZ2dRxpf9uabFwIKYRjOSRQRVHVOnEqlIpHu7u7V1tpT0rYfD8P3e31/veS6LiISx47jxIIxQfJZbz7TpiBRAsDJS+OIgEJUICDAib3Z2TZigtb9eI7h2527sYAIrFma+ikQ3cHRCgDW2rkE/uC1fEtWUdVZAVWej04jgIqiYhGNPHBdV/4gOIDnGIq378Y9ntyX49GbCSbLNcq1BhoSSealBBtWMSZRBewswdOr+UxrxKmqiAgX7n9gwfwWNqzI4ic8Jr7VKZZqPH5bYlN7SxrwfiM4iIeheKsvdroxlaY910Sx5mCqFnU8FrdleDFcoVAo4Hme6wZBMFQoFI6M956j/OQ8YolHVK7WSSYTGCuIKDN1oW7AqE8ul8NaK78RHMLFMHW9LzaxqSFBPbSEFoxEourAdKVCNrty7hTch5fzzW0CdvYDLco4lKqWTCpJzSq+6/DpS4hOvebT4Luo1XgX6jNpF8Po8R723BpGRPharjP8ucKHokEUSpUa4fgrtrR+ZGbsMRev3DzmB0EwZIxZt/HVjXdNC1KowsjICMYYjDGkRViV1ug7NwtfS2NMvx+kdflaujaPHXN+GdazamHXsubk1kIlfH/2zdSzf23h0d1Ltu/s6jiuaht+AFR4fcZEARLxAAAAAElFTkSuQmCC",
-      "hasPremium": true,
-      "bids": [
-        {
-          "id": "75ee2a9803fd1890a426af53b9a98dd0",
-          "carTitle": "Murano",
-          "amount": "$8328.89",
-          "created": "2017-12-31"
-        },
-        {
-          "id": "3e81d0d34cfaf87fb156e9b5c9e74fa8",
-          "carTitle": "Jetta",
-          "amount": "$9243.37",
-          "created": "2018-02-13"
-        },
-        {
-          "id": "068b3d92fc1f3184a36ebdb9c2b05c9c",
-          "carTitle": "Explorer",
-          "amount": "$7020.72",
-          "created": "2018-07-20"
-        },
-        {
-          "id": "d8c6ff9c03f8a22392663c1d203c108d",
-          "carTitle": "T100",
-          "amount": "$8693.27",
-          "created": "2018-08-22"
         }
       ]
     },

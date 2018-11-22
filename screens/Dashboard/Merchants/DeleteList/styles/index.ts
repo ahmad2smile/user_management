@@ -6,5 +6,9 @@ export const styles: Styles = {
 	},
 	list: {
 		margin: "20px 10px 0 0"
+	},
+	controls: {
+		display: "flex",
+		justifyContent: "space-around"
 	}
 }

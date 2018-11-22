@@ -2,12 +2,14 @@ import * as React from "react"
 import injectSheet from "react-jss"
 
 import UserProfile from "../../../../components/UserProfile/UserProfile"
+import Button from "../../../../components/Button/Button"
 
 import { IProps } from "./__types/IProps"
 
 import { styles } from "./styles/"
+import { Colors } from "../../../../theme"
 
-const DeleteList = ({ selected, classes }: IProps) => (
+const DeleteList = ({ selected, deleteHandler, closeHandler, classes }: IProps) => (
 	<div className={classes.container}>
 		<div>Are you sure you want to delete following merchants?</div>
 		<div className={classes.list}>
@@ -21,6 +23,12 @@ const DeleteList = ({ selected, classes }: IProps) => (
 					hasPremium={m.hasPremium}
 				/>
 			))}
+		</div>
+		<div className={classes.controls}>
+			<Button onClick={deleteHandler} backgroundColor={Colors.danger}>
+				Delete
+			</Button>
+			<Button onClick={closeHandler}>Cancel</Button>
 		</div>
 	</div>
 )

@@ -16,6 +16,15 @@ export type MerchantsGetUpdateAction = IAction<IMerchantsGetUpdatePayload, Merch
 
 export type MerchantsGetErrorAction = IAction<string, MerchantsTypes>
 
+export interface IMerchantsDeletePayload {
+	readonly id: string
+}
+export type MerchantsDeleteAction = IAction<IMerchantsDeletePayload, MerchantsTypes>
+
+export type MerchantsDeleteSuccessAction = IAction<undefined, MerchantsTypes>
+
+export type MerchantsDeleteErrorAction = IAction<string, MerchantsTypes>
+
 export type MerchantsGetSelected = IAction<string, MerchantsTypes>
 
 export type MerchantsActions =
@@ -24,3 +33,6 @@ export type MerchantsActions =
 	| MerchantsGetUpdateAction
 	| MerchantsGetErrorAction
 	| MerchantsGetSelected
+	| MerchantsDeleteAction
+	| MerchantsDeleteSuccessAction
+	| MerchantsDeleteErrorAction

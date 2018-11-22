@@ -10,7 +10,7 @@ import Table from "../../../components/Table/Table"
 import SelectedBtn from "./SelectedBtn/SelectedBtn"
 import DeleteList from "./DeleteList/DeleteList"
 
-import { merchantsGetRequest } from "../../../appstate/actions/merchants/merchantsActions"
+import { merchantsGetRequest, merchantsDeleteRequest } from "../../../appstate/actions/merchants/merchantsActions"
 
 import { IProps } from "./__types/IProps"
 import { IState } from "./__types/IState"
@@ -107,12 +107,17 @@ class Merchants extends React.Component<IProps, IState> {
 	}
 
 	public deleteHandler() {
-		const { selected } = this.state
+		const { dispatch } = this.props
+		const { selectedIds } = this.state
 
-		selected.forEach(() => {})
+		selectedIds.forEach((id: string) => {
+			dispatch(merchantsDeleteRequest({ id }))
+		})
 
 		this.setState({
-			drawerState: false
+			drawerState: false,
+			selected: [],
+			selectedIds: []
 		})
 	}
 
@@ -167,7 +172,11 @@ class Merchants extends React.Component<IProps, IState> {
 		return (
 			<div className={classes.container}>
 				<Drawer onClose={this.toggleDrawer} isOpen={drawerState} width="wide">
-					<DeleteList selected={selected} />
+					<DeleteList
+						selected={selected}
+						deleteHandler={this.deleteHandler}
+						closeHandler={this.toggleDrawer}
+					/>
 				</Drawer>
 				<Table
 					// Otherwise would get this number from server as total merchants
