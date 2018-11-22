@@ -6,7 +6,7 @@ interface IRootState {
 interface IMerchants {
 	readonly merchants: ReadonlyArray<IMerchant>
 	readonly selectedMerchant: Partial<IMerchant>
-	readonly merchantsGetRequest: string
+	readonly merchantsGetState: API
 	readonly merchantsGetError: string
 	readonly merchantsDeleteState: API
 	readonly merchantsDeleteError: string

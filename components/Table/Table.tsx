@@ -14,6 +14,7 @@ import { IState } from "./__types/IState"
 import { TableValues } from "./__types/TableValues"
 
 import { styles } from "./styles"
+import ApiSuspense from "../ApiSuspense/ApiSuspense"
 
 class EnhancedTable extends React.Component<IProps, IState> {
 	public readonly state: IState = {
@@ -62,6 +63,7 @@ class EnhancedTable extends React.Component<IProps, IState> {
 			tableTitle,
 			DefaultBtn,
 			SelectedBtn,
+			dataRequestState,
 			handleSelectAllClick,
 			handleSelectClick,
 			selected,
@@ -79,30 +81,32 @@ class EnhancedTable extends React.Component<IProps, IState> {
 					numSelected={selected ? selected.length : 0}
 				/>
 				<div className={classes.tableWrapper}>
-					<Table className={classes.table}>
-						<EnhancedTableHead
-							numSelected={selected ? selected.length : 0}
-							columns={header}
-							orderType={orderType}
-							orderBy={orderBy}
-							handleSelectClick={handleSelectClick}
-							onSelectAllClick={handleSelectAllClick}
-							onRequestSort={this.handleRequestSort}
-							rowCount={rows.length}
-						/>
-						<TableBody>
-							<TableRows
-								rows={rows}
+					<ApiSuspense apiState={dataRequestState}>
+						<Table className={classes.table}>
+							<EnhancedTableHead
+								numSelected={selected ? selected.length : 0}
 								columns={header}
-								handleSelectClick={handleSelectClick}
 								orderType={orderType}
 								orderBy={orderBy}
-								page={page}
-								rowsPerPage={rowsPerPage}
-								selected={selected}
+								handleSelectClick={handleSelectClick}
+								onSelectAllClick={handleSelectAllClick}
+								onRequestSort={this.handleRequestSort}
+								rowCount={rows.length}
 							/>
-						</TableBody>
-					</Table>
+							<TableBody>
+								<TableRows
+									rows={rows}
+									columns={header}
+									handleSelectClick={handleSelectClick}
+									orderType={orderType}
+									orderBy={orderBy}
+									page={page}
+									rowsPerPage={rowsPerPage}
+									selected={selected}
+								/>
+							</TableBody>
+						</Table>
+					</ApiSuspense>
 				</div>
 				<Pagination
 					component="div"

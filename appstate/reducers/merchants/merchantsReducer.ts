@@ -14,7 +14,7 @@ import { API } from "../../../__typings__/api"
 export const initialState: IMerchants = {
 	merchants: [],
 	selectedMerchant: {},
-	merchantsGetRequest: API.NOT_REQUESTED,
+	merchantsGetState: API.NOT_REQUESTED,
 	merchantsGetError: "",
 	merchantsDeleteState: API.NOT_REQUESTED,
 	merchantsDeleteError: ""
@@ -25,7 +25,7 @@ export function merchantsReducer(state: IMerchants = initialState, action: Merch
 		case MerchantsTypes.MERCHANTS_GET_REQUEST:
 			return {
 				...state,
-				merchantsGetRequest: API.REQUEST_PENDING
+				merchantsGetState: API.REQUEST_PENDING
 			}
 		case MerchantsTypes.MERCHANTS_GET_REQUEST_SUCCESS:
 			return {
@@ -35,19 +35,19 @@ export function merchantsReducer(state: IMerchants = initialState, action: Merch
 					...((action as MerchantsGetSuccessAction).payload[0] &&
 						(action as MerchantsGetSuccessAction).payload[0])
 				},
-				merchantsGetRequest: API.REQUEST_SUCCESS
+				merchantsGetState: API.REQUEST_SUCCESS
 			}
 		case MerchantsTypes.MERCHANTS_GET_REQUEST_UPDATE:
 			return {
 				...state,
 				merchants: [...state.merchants, ...(action as MerchantsGetUpdateAction).payload],
-				merchantsGetRequest: API.REQUEST_SUCCESS
+				merchantsGetState: API.REQUEST_SUCCESS
 			}
 		case MerchantsTypes.MERCHANTS_GET_REQUEST_ERROR:
 			return {
 				...state,
 				merchantsGetError: (action as MerchantsGetErrorAction).payload,
-				merchantsGetRequest: API.REQUEST_ERROR
+				merchantsGetState: API.REQUEST_ERROR
 			}
 		case MerchantsTypes.MERCHANTS_GET_SELECTED_MERCHANT:
 			return {
@@ -55,7 +55,7 @@ export function merchantsReducer(state: IMerchants = initialState, action: Merch
 				selectedMerchant: state.merchants.find(
 					(merchant: IMerchant) => merchant.id === (action as MerchantsGetSelected).payload
 				),
-				merchantsGetRequest: API.REQUEST_ERROR
+				merchantsGetState: API.REQUEST_ERROR
 			}
 		case MerchantsTypes.MERCHANTS_DELETE_REQUEST:
 			return {
