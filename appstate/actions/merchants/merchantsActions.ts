@@ -5,7 +5,6 @@ import {
 	IMerchantsDeletePayload,
 	IMerchantsGetPayload,
 	IMerchantsGetSuccessPayload,
-	IMerchantsGetUpdatePayload,
 	MerchantsCreateAction,
 	MerchantsCreateErrorAction,
 	MerchantsCreateSuccessAction,
@@ -33,7 +32,7 @@ export function merchantsGetSuccess(payload: IMerchantsGetSuccessPayload): Merch
 	}
 }
 
-export function merchantsGetUpdate(payload: IMerchantsGetUpdatePayload): MerchantsGetUpdateAction {
+export function merchantsGetUpdate(payload: IMerchantsGetSuccessPayload): MerchantsGetUpdateAction {
 	return {
 		payload,
 		type: MerchantsTypes.MERCHANTS_GET_REQUEST_UPDATE

@@ -13,11 +13,12 @@ export function* merchantsGetSaga(action: MerchantsGetAction) {
 		const response = yield call(getMerchants, action.payload)
 
 		const merchants: ReadonlyArray<IMerchant> = response.data
+		const merchantsCount: number = Number(response.headers["x-total-count"])
 
 		if (action.payload.offset) {
-			yield put(merchantsGetUpdate(merchants))
+			yield put(merchantsGetUpdate({ merchants, merchantsCount }))
 		} else {
-			yield put(merchantsGetSuccess(merchants))
+			yield put(merchantsGetSuccess({ merchants, merchantsCount }))
 		}
 	} catch (err) {
 		yield put(merchantsGetError(err))

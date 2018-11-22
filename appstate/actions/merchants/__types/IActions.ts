@@ -8,11 +8,13 @@ export interface IMerchantsGetPayload {
 }
 export type MerchantsGetAction = IAction<IMerchantsGetPayload, MerchantsTypes>
 
-export type IMerchantsGetSuccessPayload = ReadonlyArray<IMerchant>
+export interface IMerchantsGetSuccessPayload {
+	readonly merchants: ReadonlyArray<IMerchant>
+	readonly merchantsCount: number
+}
 export type MerchantsGetSuccessAction = IAction<IMerchantsGetSuccessPayload, MerchantsTypes>
 
-export type IMerchantsGetUpdatePayload = ReadonlyArray<IMerchant>
-export type MerchantsGetUpdateAction = IAction<IMerchantsGetUpdatePayload, MerchantsTypes>
+export type MerchantsGetUpdateAction = IAction<IMerchantsGetSuccessPayload, MerchantsTypes>
 
 export type MerchantsGetErrorAction = IAction<string, MerchantsTypes>
 

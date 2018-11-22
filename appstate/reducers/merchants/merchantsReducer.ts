@@ -14,6 +14,7 @@ import { API } from "../../../__typings__/api"
 
 export const initialState: IMerchants = {
 	merchants: [],
+	merchantsCount: 10,
 	selectedMerchant: {},
 	merchantsGetState: API.NOT_REQUESTED,
 	merchantsGetError: "",
@@ -33,17 +34,19 @@ export function merchantsReducer(state: IMerchants = initialState, action: Merch
 		case MerchantsTypes.MERCHANTS_GET_REQUEST_SUCCESS:
 			return {
 				...state,
-				merchants: [...(action as MerchantsGetSuccessAction).payload],
+				merchants: [...(action as MerchantsGetSuccessAction).payload.merchants],
+				merchantsCount: (action as MerchantsGetSuccessAction).payload.merchantsCount,
 				selectedMerchant: {
-					...((action as MerchantsGetSuccessAction).payload[0] &&
-						(action as MerchantsGetSuccessAction).payload[0])
+					...((action as MerchantsGetSuccessAction).payload.merchants[0] &&
+						(action as MerchantsGetSuccessAction).payload.merchants[0])
 				},
 				merchantsGetState: API.REQUEST_SUCCESS
 			}
 		case MerchantsTypes.MERCHANTS_GET_REQUEST_UPDATE:
 			return {
 				...state,
-				merchants: [...state.merchants, ...(action as MerchantsGetUpdateAction).payload],
+				merchants: [...state.merchants, ...(action as MerchantsGetUpdateAction).payload.merchants],
+				merchantsCount: (action as MerchantsGetUpdateAction).payload.merchantsCount,
 				merchantsGetState: API.REQUEST_SUCCESS
 			}
 		case MerchantsTypes.MERCHANTS_GET_REQUEST_ERROR:

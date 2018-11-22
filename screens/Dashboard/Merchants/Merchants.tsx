@@ -168,7 +168,7 @@ class Merchants extends React.Component<IProps, IState> {
 	}
 
 	public render() {
-		const { merchants, merchantsGetState, classes } = this.props
+		const { merchants, merchantsCount, merchantsGetState, classes } = this.props
 		const { drawerState, selected, selectedIds } = this.state
 
 		return (
@@ -185,8 +185,7 @@ class Merchants extends React.Component<IProps, IState> {
 					)}
 				</Drawer>
 				<Table
-					// Otherwise would get this number from server as total merchants
-					count={1000}
+					count={merchantsCount}
 					dataRequestState={merchantsGetState}
 					tableTitle="Merchants"
 					DefaultBtn={() => <DefaultBtn handler={this.toggleDrawer} />}
@@ -205,5 +204,6 @@ class Merchants extends React.Component<IProps, IState> {
 
 export default connect(({ merchants }: IRootState) => ({
 	merchants: merchants.merchants,
-	merchantsGetState: merchants.merchantsGetState
+	merchantsGetState: merchants.merchantsGetState,
+	merchantsCount: merchants.merchantsCount
 }))(injectSheet(styles)(Merchants))
