@@ -10,6 +10,8 @@ interface IMerchants {
 	readonly merchantsGetError: string
 	readonly merchantsDeleteState: API
 	readonly merchantsDeleteError: string
+	readonly merchantsCreateState: API
+	readonly merchantsCreateError: string
 }
 
 interface IMerchant {

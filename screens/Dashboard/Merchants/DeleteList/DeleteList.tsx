@@ -25,7 +25,7 @@ const DeleteList = ({ selected, deleteHandler, closeHandler, classes }: IProps) 
 			))}
 		</div>
 		<div className={classes.controls}>
-			<Button onClick={deleteHandler} backgroundColor={Colors.danger}>
+			<Button onClick={deleteHandler} color={Colors.danger}>
 				Delete
 			</Button>
 			<Button onClick={closeHandler}>Cancel</Button>

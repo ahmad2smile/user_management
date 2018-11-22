@@ -38,10 +38,10 @@ export function deleteMerchant({ id, token }: { readonly [key: string]: string }
 	return api.delete(`/merchants/${id}`)
 }
 
-export function createNewMerchant(payload: string, token: string) {
+export function createNewMerchant({ merchant, token }: { readonly merchant: IMerchant; readonly token: string }) {
 	api.defaults.headers = { "x-access-token": token }
 
-	return api.post("/merchants", payload)
+	return api.post("/merchants", merchant)
 }
 
 export function updateMerchant(payload: { readonly [key: string]: string }, token: string) {

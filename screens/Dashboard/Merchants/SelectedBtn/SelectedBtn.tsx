@@ -12,4 +12,4 @@ const SelectedBtn = ({ handler }: IProps) => (
 	</div>
 )
 
-export default SelectedBtn
+export default React.memo(SelectedBtn)

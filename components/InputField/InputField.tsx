@@ -37,13 +37,31 @@ const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error 
 
 // tslint:disable-next-line:no-object-mutation
 InputField.defaultProps = {
-	// tslint:disable-next-line:no-empty
-	input: { onBlur: () => {}, onChange: () => {} },
+	input: {
+		onBlur: () => {},
+		onChange: () => {},
+		onDragStart: () => {},
+		onDrop: () => {},
+		onFocus: () => {},
+		value: "",
+		name: ""
+	},
 	meta: {
+		autofilled: false,
+		asyncValidating: false,
+		dirty: false,
+		// tslint:disable-next-line:no-any
+		dispatch: (action: any) => action,
+		form: "",
+		initial: "",
+		invalid: false,
+		pristine: true,
+		submitting: false,
+		submitFailed: false,
 		touched: false,
-		error: "",
-		warning: ""
+		valid: true,
+		visited: false
 	}
 }
 
-export default useSheet(styles)(InputField)
+export default useSheet(styles)(InputField) as InputField<IProps>

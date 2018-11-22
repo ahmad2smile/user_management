@@ -1,18 +1,22 @@
 import { MerchantsTypes } from "../../types/merchantsTypes"
 
 import {
+	IMerchantsCreatePayload,
+	IMerchantsDeletePayload,
 	IMerchantsGetPayload,
-	MerchantsGetAction,
-	MerchantsGetSuccessAction,
 	IMerchantsGetSuccessPayload,
+	IMerchantsGetUpdatePayload,
+	MerchantsCreateAction,
+	MerchantsCreateErrorAction,
+	MerchantsCreateSuccessAction,
+	MerchantsDeleteAction,
+	MerchantsDeleteErrorAction,
+	MerchantsDeleteSuccessAction,
+	MerchantsGetAction,
 	MerchantsGetErrorAction,
 	MerchantsGetSelected,
-	MerchantsGetUpdateAction,
-	IMerchantsGetUpdatePayload,
-	IMerchantsDeletePayload,
-	MerchantsDeleteAction,
-	MerchantsDeleteSuccessAction,
-	MerchantsDeleteErrorAction
+	MerchantsGetSuccessAction,
+	MerchantsGetUpdateAction
 } from "./__types/IActions"
 
 export function merchantsGetRequest(payload: IMerchantsGetPayload): MerchantsGetAction {
@@ -64,6 +68,26 @@ export function merchantsDeleteSuccess(): MerchantsDeleteSuccessAction {
 }
 
 export function merchantsDeleteError(payload: string): MerchantsDeleteErrorAction {
+	return {
+		payload,
+		type: MerchantsTypes.MERCHANTS_DELETE_REQUEST_ERROR
+	}
+}
+
+export function merchantsCreateRequest(payload: IMerchantsCreatePayload): MerchantsCreateAction {
+	return {
+		payload,
+		type: MerchantsTypes.MERCHANTS_DELETE_REQUEST
+	}
+}
+
+export function merchantsCreateSuccess(): MerchantsCreateSuccessAction {
+	return {
+		type: MerchantsTypes.MERCHANTS_DELETE_REQUEST_SUCCESS
+	}
+}
+
+export function merchantsCreateError(payload: string): MerchantsCreateErrorAction {
 	return {
 		payload,
 		type: MerchantsTypes.MERCHANTS_DELETE_REQUEST_ERROR

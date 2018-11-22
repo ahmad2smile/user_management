@@ -27,11 +27,7 @@ function EnhancedTableHead<THead extends IHead>({
 			<TableRow>
 				{!!onSelectAllClick && (
 					<TableCell padding="checkbox">
-						<InputField
-							inputType={InputTypes.Checkbox}
-							checked={numSelected === rowCount}
-							input={{ onChange: onSelectAllClick }}
-						/>
+						<InputField inputType={InputTypes.Checkbox} checked={numSelected === rowCount} />
 					</TableCell>
 				)}
 				{!!handleSelectClick && !onSelectAllClick && (

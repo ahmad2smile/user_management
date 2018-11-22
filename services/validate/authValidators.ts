@@ -1,4 +1,4 @@
-export function username (value) {
+export function username(value: string) {
 	if (!value) {
 		return "Username is required"
 	}
@@ -6,7 +6,7 @@ export function username (value) {
 	return ""
 }
 
-export function password (value) {
+export function password(value: string) {
 	if (!value) {
 		return "Password is required"
 	}
@@ -14,13 +14,13 @@ export function password (value) {
 	return ""
 }
 
-export function email (value) {
+export function email(value: string) {
 	if (!value) {
 		return "Email is required"
 	}
 
-	// ref: https://stackoverflow.com/questions/46155/how-to-validate-email-address-in-javascript
-	// eslint-disable-next-line no-useless-escape
+	// Ref: https://stackoverflow.com/questions/46155/how-to-validate-email-address-in-javascript
+	// tslint:disable-next-line:max-line-length
 	const regxEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 	if (!regxEmail.test(value)) {
@@ -30,7 +30,7 @@ export function email (value) {
 	return ""
 }
 
-export function forgotemail (value) {
+export function forgotemail(value: string) {
 	if (!value) {
 		return "Password is required"
 	}

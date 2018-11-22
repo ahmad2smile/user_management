@@ -1,4 +1,4 @@
-export function newMessage (value) {
+export function newMessage(value: string) {
 	const formattedValue = value.replace(/<(?:.|\n)*?>/gm, "").trim()
 	if (!formattedValue) {
 		return "Message is required"
@@ -7,7 +7,7 @@ export function newMessage (value) {
 	return ""
 }
 
-export function message (value) {
+export function message(value: string) {
 	if (!value) {
 		return "Message is required"
 	}
@@ -15,7 +15,7 @@ export function message (value) {
 	return ""
 }
 
-export function subject (value) {
+export function subject(value: string) {
 	if (!value) {
 		return "Subject is required"
 	}

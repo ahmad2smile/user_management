@@ -8,6 +8,7 @@ import Drawer from "@atlaskit/drawer"
 import Table from "../../../components/Table/Table"
 
 import SelectedBtn from "./SelectedBtn/SelectedBtn"
+import DefaultBtn from "./DefaultBtn/DefaultBtn"
 import DeleteList from "./DeleteList/DeleteList"
 
 import { merchantsGetRequest, merchantsDeleteRequest } from "../../../appstate/actions/merchants/merchantsActions"
@@ -16,6 +17,7 @@ import { IProps } from "./__types/IProps"
 import { IState } from "./__types/IState"
 
 import { styles } from "./styles"
+import CreateForm from "./CreateForm/CreateForm"
 
 const header: ReadonlyArray<ITableHeader> = [
 	{ id: "firstname", numeric: false, disablePadding: false, label: "Firstname" },
@@ -172,17 +174,22 @@ class Merchants extends React.Component<IProps, IState> {
 		return (
 			<div className={classes.container}>
 				<Drawer onClose={this.toggleDrawer} isOpen={drawerState} width="wide">
-					<DeleteList
-						selected={selected}
-						deleteHandler={this.deleteHandler}
-						closeHandler={this.toggleDrawer}
-					/>
+					{selectedIds.length ? (
+						<DeleteList
+							selected={selected}
+							deleteHandler={this.deleteHandler}
+							closeHandler={this.toggleDrawer}
+						/>
+					) : (
+						<CreateForm />
+					)}
 				</Drawer>
 				<Table
 					// Otherwise would get this number from server as total merchants
 					count={1000}
 					dataRequestState={merchantsGetState}
 					tableTitle="Merchants"
+					DefaultBtn={() => <DefaultBtn handler={this.toggleDrawer} />}
 					SelectedBtn={() => <SelectedBtn handler={this.toggleDrawer} />}
 					handleSelectClick={this.handleSelectClick}
 					onPageChange={this.onPageChange}

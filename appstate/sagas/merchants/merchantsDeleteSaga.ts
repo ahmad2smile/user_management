@@ -16,11 +16,7 @@ export function* merchantsDeleteSaga(action: MerchantsDeleteAction) {
 	try {
 		const token: string = yield select(({ auth }: IRootState) => auth.authToken)
 
-		const response = yield call(deleteMerchant, { id: action.payload.id, token })
-
-		console.log("====================================")
-		console.log(response)
-		console.log("====================================")
+		yield call(deleteMerchant, { id: action.payload.id, token })
 
 		yield put(merchantsDeleteSuccess())
 

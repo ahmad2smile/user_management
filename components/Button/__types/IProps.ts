@@ -3,10 +3,11 @@ import { StyledComponentProps } from "react-jss"
 
 export interface IProps extends StyledComponentProps {
 	readonly children: React.ReactNode
-	readonly onClick: (event: React.MouseEvent) => void
+	readonly onClick?: (event: React.MouseEvent) => void
 	readonly href?: string
+	readonly type?: string
 	readonly padding?: string | number
-	readonly backgroundColor?: string
+	readonly color?: string
 	readonly width?: string | number
 	readonly margin?: string | number
 }
