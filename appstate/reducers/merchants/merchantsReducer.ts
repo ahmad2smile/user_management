@@ -4,10 +4,12 @@ import {
 	MerchantsActions,
 	MerchantsGetSuccessAction,
 	MerchantsGetErrorAction,
-	MerchantsGetSelected,
 	MerchantsGetUpdateAction,
 	MerchantsDeleteErrorAction,
-	MerchantsCreateErrorAction
+	MerchantsCreateErrorAction,
+	MerchantsUpdateErrorAction,
+	MerchantGetSelectedSuccessAction,
+	MerchantGetSelectedErrorAction
 } from "../../actions/merchants/__types/IActions"
 
 import { API } from "../../../__typings__/api"
@@ -18,10 +20,14 @@ export const initialState: IMerchants = {
 	selectedMerchant: {},
 	merchantsGetState: API.NOT_REQUESTED,
 	merchantsGetError: "",
+	merchantsGetSelectedState: API.NOT_REQUESTED,
+	merchantsGetSelectedError: "",
 	merchantsDeleteState: API.NOT_REQUESTED,
 	merchantsDeleteError: "",
 	merchantsCreateState: API.NOT_REQUESTED,
 	merchantsCreateError: "",
+	merchantsUpdateState: API.NOT_REQUESTED,
+	merchantsUpdateError: "",
 	merchantsDrawerState: false
 }
 
@@ -56,13 +62,22 @@ export function merchantsReducer(state: IMerchants = initialState, action: Merch
 				merchantsGetError: (action as MerchantsGetErrorAction).payload,
 				merchantsGetState: API.REQUEST_ERROR
 			}
-		case MerchantsTypes.MERCHANTS_GET_SELECTED_MERCHANT:
+		case MerchantsTypes.MERCHANTS_GET_SELECTED_REQUEST:
 			return {
 				...state,
-				selectedMerchant: state.merchants.find(
-					(merchant: IMerchant) => merchant.id === (action as MerchantsGetSelected).payload
-				),
-				merchantsGetState: API.REQUEST_ERROR
+				merchantsGetSelectedState: API.REQUEST_PENDING
+			}
+		case MerchantsTypes.MERCHANTS_GET_SELECTED_SUCCESS:
+			return {
+				...state,
+				selectedMerchant: (action as MerchantGetSelectedSuccessAction).payload.merchant,
+				merchantsGetSelectedState: API.REQUEST_ERROR
+			}
+		case MerchantsTypes.MERCHANTS_GET_SELECTED_ERROR:
+			return {
+				...state,
+				merchantsGetSelectedState: API.REQUEST_ERROR,
+				merchantsGetSelectedError: (action as MerchantGetSelectedErrorAction).payload
 			}
 		case MerchantsTypes.MERCHANTS_DELETE_REQUEST:
 			return {
@@ -95,6 +110,22 @@ export function merchantsReducer(state: IMerchants = initialState, action: Merch
 				...state,
 				merchantsCreateError: (action as MerchantsCreateErrorAction).payload,
 				merchantsCreateState: API.REQUEST_ERROR
+			}
+		case MerchantsTypes.MERCHANTS_UPDATE_REQUEST:
+			return {
+				...state,
+				merchantsUpdateState: API.REQUEST_PENDING
+			}
+		case MerchantsTypes.MERCHANTS_UPDATE_REQUEST_SUCCESS:
+			return {
+				...state,
+				merchantsUpdateState: API.REQUEST_SUCCESS
+			}
+		case MerchantsTypes.MERCHANTS_UPDATE_REQUEST_ERROR:
+			return {
+				...state,
+				merchantsUpdateError: (action as MerchantsUpdateErrorAction).payload,
+				merchantsUpdateState: API.REQUEST_ERROR
 			}
 		case MerchantsTypes.MERCHANTS_DRAWER_TOGGLE:
 			return {

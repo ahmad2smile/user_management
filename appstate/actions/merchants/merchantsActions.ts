@@ -13,10 +13,18 @@ import {
 	MerchantsDeleteSuccessAction,
 	MerchantsGetAction,
 	MerchantsGetErrorAction,
-	MerchantsGetSelected,
+	MerchantGetSelectedRequestAction,
 	MerchantsGetSuccessAction,
 	MerchantsGetUpdateAction,
-	MerchantsDrawerToggleAction
+	MerchantsDrawerToggleAction,
+	IMerchantsUpdatePayload,
+	MerchantsUpdateAction,
+	MerchantsUpdateSuccessAction,
+	MerchantsUpdateErrorAction,
+	MerchantGetSelectedSuccessAction,
+	IMerchantGetSelectedSuccessPayload,
+	MerchantGetSelectedErrorAction,
+	MerchantsUpdateStateResetAction
 } from "./__types/IActions"
 
 export function merchantsGetRequest(payload: IMerchantsGetPayload): MerchantsGetAction {
@@ -47,10 +55,26 @@ export function merchantsGetError(payload: string): MerchantsGetErrorAction {
 	}
 }
 
-export function merchantsGetSelected(payload: string): MerchantsGetSelected {
+export function merchantGetSelectedRequest(payload: string): MerchantGetSelectedRequestAction {
 	return {
 		payload,
-		type: MerchantsTypes.MERCHANTS_GET_SELECTED_MERCHANT
+		type: MerchantsTypes.MERCHANTS_GET_SELECTED_REQUEST
+	}
+}
+
+export function merchantGetSelectedSuccess(
+	payload: IMerchantGetSelectedSuccessPayload
+): MerchantGetSelectedSuccessAction {
+	return {
+		payload,
+		type: MerchantsTypes.MERCHANTS_GET_SELECTED_SUCCESS
+	}
+}
+
+export function merchantGetSelectedError(payload: string): MerchantGetSelectedErrorAction {
+	return {
+		payload,
+		type: MerchantsTypes.MERCHANTS_GET_SELECTED_ERROR
 	}
 }
 
@@ -91,6 +115,32 @@ export function merchantsCreateError(payload: string): MerchantsCreateErrorActio
 	return {
 		payload,
 		type: MerchantsTypes.MERCHANTS_CREATE_REQUEST_ERROR
+	}
+}
+
+export function merchantsUpdateRequest(payload: IMerchantsUpdatePayload): MerchantsUpdateAction {
+	return {
+		payload,
+		type: MerchantsTypes.MERCHANTS_UPDATE_REQUEST
+	}
+}
+
+export function merchantsUpdateSuccess(): MerchantsUpdateSuccessAction {
+	return {
+		type: MerchantsTypes.MERCHANTS_UPDATE_REQUEST_SUCCESS
+	}
+}
+
+export function merchantsUpdateError(payload: string): MerchantsUpdateErrorAction {
+	return {
+		payload,
+		type: MerchantsTypes.MERCHANTS_UPDATE_REQUEST_ERROR
+	}
+}
+
+export function merchantsUpdateStateReset(): MerchantsUpdateStateResetAction {
+	return {
+		type: MerchantsTypes.MERCHANTS_UPDATE_STATE_RESET
 	}
 }
 

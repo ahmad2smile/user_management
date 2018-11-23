@@ -1,16 +1,16 @@
 import * as React from "react"
 import injectSheet from "react-jss"
 
-import UserInfo from "./UserInfo/UserInfo"
+import EditForm from "./EditForm/UpdateForm"
 
 import { IProps } from "./__types/IProps"
 
 import { styles } from "./styles"
 
-const MerchantProfileComponent = ({ classes }: IProps) => (
+const MerchantEditComponent = ({ classes }: IProps) => (
 	<div className={classes.container}>
-		<UserInfo />
+		<EditForm />
 	</div>
 )
 
-export default injectSheet(styles)(MerchantProfileComponent)
+export default injectSheet(styles)(MerchantEditComponent)

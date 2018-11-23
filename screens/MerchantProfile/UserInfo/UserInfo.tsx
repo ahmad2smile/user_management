@@ -1,12 +1,12 @@
 import * as React from "react"
 import { connect } from "react-redux"
-import { withRouter } from "react-router-dom"
+import { withRouter, Link } from "react-router-dom"
 import Paper from "@material-ui/core/Paper"
 
 import UserProfile from "./../../../components/UserProfile/UserProfile"
 import Table from "../../../components/Table/Table"
 
-import { merchantsGetSelected } from "../../../appstate/actions/merchants/merchantsActions"
+import { merchantGetSelectedRequest } from "../../../appstate/actions/merchants/merchantsActions"
 
 import { IProps } from "./__types/IProps"
 
@@ -25,7 +25,7 @@ class UserInfo extends React.Component<IProps> {
 			dispatch
 		} = this.props
 
-		dispatch(merchantsGetSelected(id))
+		dispatch(merchantGetSelectedRequest(id))
 	}
 
 	public onPageChange(_page: number, _rowsPerPage: number) {}
@@ -49,31 +49,35 @@ class UserInfo extends React.Component<IProps> {
 
 	public render() {
 		const {
-			selectedMerchant: { avatarUrl, firstname, lastname, email, phone, hasPremium, bids }
+			selectedMerchant: { id, avatarUrl, firstname, lastname, email, phone, hasPremium, bids }
 		} = this.props
 
 		return (
-			<Paper square={true}>
-				<UserProfile
-					avatarUrl={avatarUrl}
-					firstname={firstname}
-					lastname={lastname}
-					email={email}
-					phone={phone}
-					hasPremium={hasPremium}
-				/>
-				<div>
-					<Table
-						count={bids.length}
-						rowsPerPage={5}
-						tableTitle="Bids"
-						onPageChange={this.onPageChange}
-						onRowsPerPageChange={this.onRowsPerPageChange}
-						header={header}
-						rows={this.formatData(bids)}
+			<div>
+				<Link to="/">Go Back</Link>
+				<Link to={`/merchants/edit/${id}`}>Edit</Link>
+				<Paper square={true}>
+					<UserProfile
+						avatarUrl={avatarUrl}
+						firstname={firstname}
+						lastname={lastname}
+						email={email}
+						phone={phone}
+						hasPremium={hasPremium}
 					/>
-				</div>
-			</Paper>
+					<div>
+						<Table
+							count={bids.length}
+							rowsPerPage={5}
+							tableTitle="Bids"
+							onPageChange={this.onPageChange}
+							onRowsPerPageChange={this.onRowsPerPageChange}
+							header={header}
+							rows={this.formatData(bids)}
+						/>
+					</div>
+				</Paper>
+			</div>
 		)
 	}
 }

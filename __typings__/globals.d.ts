@@ -9,10 +9,14 @@ interface IMerchants {
 	readonly selectedMerchant: Partial<IMerchant>
 	readonly merchantsGetState: API
 	readonly merchantsGetError: string
+	readonly merchantsGetSelectedState: API
+	readonly merchantsGetSelectedError: string
 	readonly merchantsDeleteState: API
 	readonly merchantsDeleteError: string
 	readonly merchantsCreateState: API
 	readonly merchantsCreateError: string
+	readonly merchantsUpdateState: API
+	readonly merchantsUpdateError: string
 	readonly merchantsDrawerState: boolean
 }
 
