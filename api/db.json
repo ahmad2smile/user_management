@@ -1050,47 +1050,6 @@
       ]
     },
     {
-      "id": "837d5ebb769f06187d4e3fc789c755e8",
-      "firstname": "Brandea",
-      "lastname": "Olesen",
-      "email": "bolesen14@dell.com",
-      "phone": "857-793-5869",
-      "avatarUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDjLpVNLaxNRFP6STmaKdFqrgYKWlGLSgoiKCwsKVnFRtBsVUSTNyj/gxv4Bl678AyKCoCulgmtd+W7romgzKT4QMW1G+5hMpnPnnuuZm6ZNawoVBw7n3pn5vvP4zkkopfA/j9F8cafO3FekCjGpIgKIvayftTXOkr71jkz2/UXA4HxXfz72gIx/lBsWSfiVtwiWHK8B3kRQeX/6lmnnkuDAwn0MJSKQEFChQCp9CcHixxgsGWw3B01uRKfx9t1HIP1POpoSdUulLyD0vqO26IAkDW7tgSZYeHPqcmpXxkTChKzOaAKSEdo6jnEWVY5ehFxdHs2cn55rScDR73H6DKyyRWs1R0haGdR+z8YZ3MyMTj9rpUKi/PLkUJuZfmX3nkNYmQBxzYprpyCA2XMRrvNAcdfDhgKkm6ttKTdW6jH4w4RpD/ALAaNzhH2kSwALoSJCd9+VhIqEVVeD4C1MclaOT0Ke0Cowq+X9eLHapLH23f1XreDzI27LfqT2HIfvzsRAyLB2N1coXV8vodUkfn16+HnnvrPDhrmXsxBY+fmOwcVlJh/IFebK207iuqSShg0rjer8B9TcWY7q38nmnRstm7g1gy9PDk2129mjinjy3OIvJjvI4PJ2u7CJgMEdUMmVuA9ShLez14rj/7RMDHzNAzTP/gCDvR2to968NSs9HBxqvu/E/gBCSoxk53STJQAAAABJRU5ErkJggg==",
-      "hasPremium": false,
-      "bids": [
-        {
-          "id": "4b0b4a14bb8d20b39f69d0fdfb5a6fa6",
-          "carTitle": "Tacoma",
-          "amount": "$8913.58",
-          "created": "2018-02-05"
-        },
-        {
-          "id": "3e4d179752ae2a02e7144a7c66dd8c9f",
-          "carTitle": "Sonoma",
-          "amount": "$7101.07",
-          "created": "2018-09-02"
-        },
-        {
-          "id": "b97078f06ef1ffe5439028332d8d6756",
-          "carTitle": "DBS",
-          "amount": "$6081.27",
-          "created": "2018-11-19"
-        },
-        {
-          "id": "02c2bd04247f0d76868f77fe9a475552",
-          "carTitle": "Z8",
-          "amount": "$6817.79",
-          "created": "2018-08-08"
-        },
-        {
-          "id": "37cc9d8410a53bd561925783faf7ef5f",
-          "carTitle": "612 Scaglietti",
-          "amount": "$7362.25",
-          "created": "2018-07-28"
-        }
-      ]
-    },
-    {
       "id": "d727e1b4b619bdec5fb7e49107aa153f",
       "firstname": "Cull",
       "lastname": "Grahlmans",
@@ -28900,74 +28859,6 @@
       "lastname": "Here",
       "email": "ahmad_here@gmail.com",
       "phone": "+923327574607",
-      "avatarUrl": "",
-      "hasPremium": false,
-      "bids": [
-        {
-          "id": "",
-          "carTitle": "",
-          "amount": 0,
-          "created": ""
-        }
-      ]
-    },
-    {
-      "id": "43bb74dd93a58736a8caaa0a48417700",
-      "firstname": "Dummy",
-      "lastname": "User",
-      "email": "dumyy_user@gmail.com",
-      "phone": "",
-      "avatarUrl": "",
-      "hasPremium": true,
-      "bids": [
-        {
-          "id": "",
-          "carTitle": "",
-          "amount": 0,
-          "created": ""
-        }
-      ]
-    },
-    {
-      "id": "c7439db45fc890b4e44e8ad20a0f2eec",
-      "firstname": "Dumm1",
-      "lastname": "Dumm1Last",
-      "email": "dumm1@gmail.com",
-      "phone": "",
-      "avatarUrl": "",
-      "hasPremium": false,
-      "bids": [
-        {
-          "id": "",
-          "carTitle": "",
-          "amount": 0,
-          "created": ""
-        }
-      ]
-    },
-    {
-      "id": "c651b4903a73bcc4e3af68cf179fa398",
-      "firstname": "dumm2",
-      "lastname": "dumm2l",
-      "email": "dumm2@gmail.com",
-      "phone": "",
-      "avatarUrl": "",
-      "hasPremium": false,
-      "bids": [
-        {
-          "id": "",
-          "carTitle": "",
-          "amount": 0,
-          "created": ""
-        }
-      ]
-    },
-    {
-      "id": "536167483efc9f5069a68ac11760bbc0",
-      "firstname": "Dumm2",
-      "lastname": "Dumm2l",
-      "email": "Dumm2@gmail.com",
-      "phone": "",
       "avatarUrl": "",
       "hasPremium": false,
       "bids": [

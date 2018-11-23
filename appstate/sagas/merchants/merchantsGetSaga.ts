@@ -1,4 +1,4 @@
-import { call, takeLatest, put } from "redux-saga/effects"
+import { call, throttle, put } from "redux-saga/effects"
 
 import { merchantsGetSuccess, merchantsGetError, merchantsGetUpdate } from "../../actions/merchants/merchantsActions"
 
@@ -26,5 +26,5 @@ export function* merchantsGetSaga(action: MerchantsGetAction) {
 }
 
 export function* merchantsGetSagaWatcher() {
-	yield takeLatest(MerchantsTypes.MERCHANTS_GET_REQUEST, merchantsGetSaga)
+	yield throttle(500, MerchantsTypes.MERCHANTS_GET_REQUEST, merchantsGetSaga)
 }

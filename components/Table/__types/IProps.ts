@@ -17,6 +17,6 @@ export interface IProps extends StyledComponentProps {
 	readonly rows: ReadonlyArray<IRow>
 	readonly rowsPerPage?: number
 	readonly selected?: ReadonlyArray<string>
-	readonly SelectedBtn?: React.SFC
+	readonly SelectedBtn?: React.SFC | React.ComponentClass
 	readonly tableTitle: string
 }

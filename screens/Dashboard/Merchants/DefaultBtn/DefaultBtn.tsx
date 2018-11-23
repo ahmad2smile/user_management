@@ -64,4 +64,4 @@ class DefaultBtn extends React.Component<IProps, IState> {
 	}
 }
 
-export default connect(() => ({}))(injectSheet(styles)(DefaultBtn))
+export default connect()(injectSheet(styles)(DefaultBtn))

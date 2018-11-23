@@ -1,3 +1,3 @@
-export interface IProps {
-	readonly handler: (event: React.MouseEvent) => void
-}
+import { DispatchProp } from "react-redux"
+
+export interface IProps extends DispatchProp {}

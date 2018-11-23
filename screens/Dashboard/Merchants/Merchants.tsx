@@ -195,7 +195,7 @@ class Merchants extends React.Component<IProps, IState> {
 					dataRequestState={merchantsGetState}
 					tableTitle="Merchants"
 					DefaultBtn={DefaultBtn}
-					SelectedBtn={() => <SelectedBtn handler={this.toggleDrawer} />}
+					SelectedBtn={SelectedBtn}
 					handleSelectClick={this.handleSelectClick}
 					onPageChange={this.onPageChange}
 					onRowsPerPageChange={this.onRowsPerPageChange}

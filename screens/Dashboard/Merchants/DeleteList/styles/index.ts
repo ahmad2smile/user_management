@@ -5,7 +5,9 @@ export const styles: Styles = {
 		paddingRight: 30
 	},
 	list: {
-		margin: "20px 10px 0 0"
+		margin: "20px 10px 0 0",
+		height: 650,
+		overflowY: "scroll"
 	},
 	controls: {
 		display: "flex",
