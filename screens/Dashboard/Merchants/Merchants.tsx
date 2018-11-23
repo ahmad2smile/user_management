@@ -38,7 +38,8 @@ class Merchants extends React.Component<IProps, IState> {
 		this.state = {
 			selected: [],
 			selectedIds: [],
-			currentPage: 0
+			currentPage: 0,
+			searchValue: ""
 		}
 
 		this.toggleDrawer = this.toggleDrawer.bind(this)
@@ -193,7 +194,7 @@ class Merchants extends React.Component<IProps, IState> {
 					count={merchantsCount}
 					dataRequestState={merchantsGetState}
 					tableTitle="Merchants"
-					DefaultBtn={() => <DefaultBtn handler={this.toggleDrawer} />}
+					DefaultBtn={DefaultBtn}
 					SelectedBtn={() => <SelectedBtn handler={this.toggleDrawer} />}
 					handleSelectClick={this.handleSelectClick}
 					onPageChange={this.onPageChange}

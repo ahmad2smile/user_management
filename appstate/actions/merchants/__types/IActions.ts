@@ -7,6 +7,7 @@ import { MerchantsTypes } from "../../../types/merchantsTypes"
 export interface IMerchantsGetPayload {
 	readonly limit?: number
 	readonly offset?: number
+	readonly filter?: string
 	readonly sort?: string
 	readonly order?: "asc" | "desc"
 }

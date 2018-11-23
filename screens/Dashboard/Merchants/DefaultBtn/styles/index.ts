@@ -4,6 +4,15 @@ import { Colors } from "../../../../../theme"
 
 export const styles: Styles = {
 	container: {
+		width: 300,
+		display: "flex",
+		justifyContent: "space-around",
+		alignItems: "center"
+	},
+	input: {
+		width: 200
+	},
+	addContainer: {
 		height: 40,
 		width: 40,
 		display: "flex",

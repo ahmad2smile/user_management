@@ -28,7 +28,11 @@ export function loginUser(credentials: string) {
 	return api.post("/user/login", credentials)
 }
 
-export function getMerchants({ limit = 10, offset = 0 }) {
+export function getMerchants({ limit = 10, offset = 0, filter = "" }) {
+	if (filter) {
+		return api.get(`/merchants?q=${filter}`)
+	}
+
 	return api.get(`/merchants?_page=${offset}&_limit=${limit}`)
 }
 

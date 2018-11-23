@@ -1,5 +1,4 @@
 import { StyledComponentProps } from "react-jss"
+import { DispatchProp } from "react-redux"
 
-export interface IProps extends StyledComponentProps {
-	readonly handler: (event: React.MouseEvent) => void
-}
+export interface IProps extends StyledComponentProps, DispatchProp, Partial<IMerchants> {}

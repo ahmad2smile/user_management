@@ -8,7 +8,7 @@ import { API } from "../../../__typings__/api"
 export interface IProps extends StyledComponentProps {
 	readonly count: number
 	readonly dataRequestState?: API
-	readonly DefaultBtn?: React.SFC
+	readonly DefaultBtn?: React.SFC | React.ComponentClass
 	readonly handleSelectAllClick?: React.ChangeEventHandler
 	readonly handleSelectClick?: (event: React.ChangeEvent, id: string) => void
 	readonly header: ReadonlyArray<IHead>
