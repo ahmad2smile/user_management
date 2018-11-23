@@ -49,7 +49,7 @@ interface IBid {
 interface IAuth {
 	readonly user: IUser
 	readonly authToken: string
-	readonly loginRequest: string
+	readonly loginRequestState: API
 	readonly loginError: string
 }
 

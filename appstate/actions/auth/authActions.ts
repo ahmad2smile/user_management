@@ -1,23 +1,37 @@
 import { AuthTypes } from "../../types/authTypes"
 
-import { LoginAction, LoginSuccessAction, LoginErrorAction, ILoginSuccessPayload } from "./__types/IActions"
+import {
+	ILoginRequestActionPayload,
+	LoginSuccessAction,
+	LoginErrorAction,
+	ILoginSuccessPayload,
+	LoginRequestAction,
+	LoginStateResetAction
+} from "./__types/IActions"
 
-export function merchantsGetRequest(): LoginAction {
+export function loginRequest(payload: ILoginRequestActionPayload): LoginRequestAction {
 	return {
+		payload,
 		type: AuthTypes.LOGIN_REQUEST
 	}
 }
 
-export function merchantsGetSuccess(payload: ILoginSuccessPayload): LoginSuccessAction {
+export function loginSuccess(payload: ILoginSuccessPayload): LoginSuccessAction {
 	return {
 		payload,
 		type: AuthTypes.LOGIN_REQUEST_SUCCESS
 	}
 }
 
-export function merchantsGetError(payload: string): LoginErrorAction {
+export function loginError(payload: string): LoginErrorAction {
 	return {
 		payload,
+		type: AuthTypes.LOGIN_REQUEST_ERROR
+	}
+}
+
+export function loginStateReset(): LoginStateResetAction {
+	return {
 		type: AuthTypes.LOGIN_REQUEST_ERROR
 	}
 }

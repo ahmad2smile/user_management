@@ -5,12 +5,12 @@ import { AuthActions, LoginSuccessAction, LoginErrorAction } from "../../actions
 import { API } from "../../../__typings__/api"
 
 export const initialState: IAuth = {
-	authToken: "SomeToken",
+	authToken: "",
 	user: {
 		id: "",
 		name: ""
 	},
-	loginRequest: API.NOT_REQUESTED,
+	loginRequestState: API.NOT_REQUESTED,
 	loginError: ""
 }
 
@@ -19,17 +19,21 @@ export function authReducer(state: IAuth = initialState, action: AuthActions): I
 		{
 			[AuthTypes.LOGIN_REQUEST]: {
 				...state,
-				loginRequest: API.REQUEST_PENDING
+				loginRequestState: API.REQUEST_PENDING
 			},
 			[AuthTypes.LOGIN_REQUEST_SUCCESS]: {
 				...state,
 				...(action as LoginSuccessAction).payload,
-				loginRequest: API.REQUEST_SUCCESS
+				loginRequestState: API.REQUEST_SUCCESS
 			},
 			[AuthTypes.LOGIN_REQUEST_ERROR]: {
 				...state,
 				loginError: (action as LoginErrorAction).payload,
-				loginRequest: API.REQUEST_ERROR
+				loginRequestState: API.REQUEST_ERROR
+			},
+			[AuthTypes.LOGIN_REQUEST_STATE_RESET]: {
+				...state,
+				loginRequestState: API.NOT_REQUESTED
 			}
 		}[action.type] || state
 	)
