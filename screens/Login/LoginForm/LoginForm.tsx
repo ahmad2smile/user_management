@@ -58,6 +58,7 @@ class LoginForm extends React.Component<IProps, IState> {
 						<label htmlFor="email">Email</label>
 					</div>
 					<Field
+						autoFocus
 						component={InputField}
 						name="email"
 						placeholder="Enter your email"
