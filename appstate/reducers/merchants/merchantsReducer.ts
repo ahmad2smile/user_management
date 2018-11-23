@@ -21,7 +21,8 @@ export const initialState: IMerchants = {
 	merchantsDeleteState: API.NOT_REQUESTED,
 	merchantsDeleteError: "",
 	merchantsCreateState: API.NOT_REQUESTED,
-	merchantsCreateError: ""
+	merchantsCreateError: "",
+	merchantsDrawerState: false
 }
 
 export function merchantsReducer(state: IMerchants = initialState, action: MerchantsActions): IMerchants {
@@ -94,6 +95,11 @@ export function merchantsReducer(state: IMerchants = initialState, action: Merch
 				...state,
 				merchantsCreateError: (action as MerchantsCreateErrorAction).payload,
 				merchantsCreateState: API.REQUEST_ERROR
+			}
+		case MerchantsTypes.MERCHANTS_DRAWER_TOGGLE:
+			return {
+				...state,
+				merchantsDrawerState: !state.merchantsDrawerState
 			}
 		default:
 			return state

@@ -1,6 +1,10 @@
 import { call, takeLatest, put, select } from "redux-saga/effects"
 
-import { merchantsCreateSuccess, merchantsCreateError } from "../../actions/merchants/merchantsActions"
+import {
+	merchantsCreateSuccess,
+	merchantsCreateError,
+	merchantsDrawerToggle
+} from "../../actions/merchants/merchantsActions"
 
 import { createNewMerchant } from "../../../services/dataService"
 
@@ -12,13 +16,10 @@ export function* merchantsCreateSaga(action: MerchantsCreateAction) {
 	try {
 		const token: string = yield select(({ auth }: IRootState) => auth.authToken)
 
-		const response = yield call(createNewMerchant, { merchant: action.payload, token })
-
-		console.log("====================================")
-		console.log(response)
-		console.log("====================================")
+		yield call(createNewMerchant, { merchant: action.payload, token })
 
 		yield put(merchantsCreateSuccess())
+		yield put(merchantsDrawerToggle())
 	} catch (err) {
 		yield put(merchantsCreateError(err))
 	}

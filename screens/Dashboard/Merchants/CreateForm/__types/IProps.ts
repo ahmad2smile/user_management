@@ -7,4 +7,5 @@ import { IForm } from "./IForm"
 export interface IProps
 	extends StyledComponentProps,
 		DispatchProp,
-		InjectedFormProps<IForm, Pick<IProps, "dispatch">> {}
+		InjectedFormProps<IForm, Pick<IProps, "dispatch">>,
+		Partial<IMerchants> {}

@@ -6,16 +6,28 @@ import injectSheet from "react-jss"
 
 import InputField from "../../../../components/InputField/InputField"
 import Button from "../../../../components/Button/Button"
+import ApiSuspense from "../../../../components/ApiSuspense/ApiSuspense"
+
+import { merchantsCreateRequest } from "../../../../appstate/actions/merchants/merchantsActions"
 
 import { validate } from "../../../../services/validate/validationService"
+
+import { MD5 } from "../../../../utils/md5Generator"
 
 import { IProps } from "./__types/IProps"
 import { IForm } from "./__types/IForm"
 import { InputTypes } from "../../../../utils/models/InputTypes"
+import { API } from "../../../../__typings__/api"
 
 import { styles } from "./styles"
 
 class CreateForm extends React.Component<IProps> {
+	public constructor(props: IProps) {
+		super(props)
+
+		this.submitHandler = this.submitHandler.bind(this)
+	}
+
 	public componentDidMount() {
 		this.props.initialize({
 			firstname: "",
@@ -26,14 +38,35 @@ class CreateForm extends React.Component<IProps> {
 		})
 	}
 
-	public submitHandler(values: IForm) {
-		console.log("====================================")
-		console.log(values)
-		console.log("====================================")
+	private submitHandler(values: IForm) {
+		const { dispatch } = this.props
+		const { firstname, lastname, email, phone, hasPremium } = values
+
+		const payload: IMerchant = {
+			// Cause mocked server can't generate this
+			// Otherwise Server would generate it
+			id: MD5(firstname + lastname + email),
+			firstname,
+			lastname,
+			email,
+			phone,
+			avatarUrl: "",
+			hasPremium,
+			bids: [
+				{
+					id: "",
+					carTitle: "",
+					amount: 0,
+					created: ""
+				}
+			]
+		}
+
+		dispatch(merchantsCreateRequest(payload))
 	}
 
 	public render() {
-		const { handleSubmit, classes } = this.props
+		const { handleSubmit, merchantsCreateState, valid, pristine, classes } = this.props
 
 		return (
 			<div className={classes.container}>
@@ -93,7 +126,14 @@ class CreateForm extends React.Component<IProps> {
 						/>
 					</div>
 					<div>
-						<Button type="submit">Login</Button>
+						<Button
+							type="submit"
+							disabled={!valid || pristine || merchantsCreateState === API.REQUEST_PENDING}
+						>
+							<ApiSuspense apiState={merchantsCreateState}>
+								<div>Login</div>
+							</ApiSuspense>
+						</Button>
 					</div>
 				</form>
 			</div>

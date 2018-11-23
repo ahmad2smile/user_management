@@ -6,7 +6,7 @@ import { IProps } from "../__types/IProps"
 export const styles: any = {
 	button: {
 		color: "black",
-		background: ({ color }: IProps) => color || Colors.primaryLight,
+		background: ({ color, disabled }: IProps) => (disabled ? "#ccc" : color || Colors.primaryLight),
 		padding: ({ padding }: IProps) => padding || 10,
 		width: ({ width }: IProps) => width || 215,
 		outline: "none",

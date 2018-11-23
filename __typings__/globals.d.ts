@@ -13,6 +13,7 @@ interface IMerchants {
 	readonly merchantsDeleteError: string
 	readonly merchantsCreateState: API
 	readonly merchantsCreateError: string
+	readonly merchantsDrawerState: boolean
 }
 
 interface IMerchant {
@@ -24,7 +25,7 @@ interface IMerchant {
 	readonly phone: string
 	readonly hasPremium: boolean
 	readonly bids: ReadonlyArray<IBid>
-	readonly [key: string]: boolean | string | number
+	readonly [key: string]: boolean | string | ReadonlyArray<IBid>
 }
 
 interface ITableData {

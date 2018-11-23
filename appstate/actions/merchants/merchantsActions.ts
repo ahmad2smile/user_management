@@ -15,7 +15,8 @@ import {
 	MerchantsGetErrorAction,
 	MerchantsGetSelected,
 	MerchantsGetSuccessAction,
-	MerchantsGetUpdateAction
+	MerchantsGetUpdateAction,
+	MerchantsDrawerToggleAction
 } from "./__types/IActions"
 
 export function merchantsGetRequest(payload: IMerchantsGetPayload): MerchantsGetAction {
@@ -76,19 +77,25 @@ export function merchantsDeleteError(payload: string): MerchantsDeleteErrorActio
 export function merchantsCreateRequest(payload: IMerchantsCreatePayload): MerchantsCreateAction {
 	return {
 		payload,
-		type: MerchantsTypes.MERCHANTS_DELETE_REQUEST
+		type: MerchantsTypes.MERCHANTS_CREATE_REQUEST
 	}
 }
 
 export function merchantsCreateSuccess(): MerchantsCreateSuccessAction {
 	return {
-		type: MerchantsTypes.MERCHANTS_DELETE_REQUEST_SUCCESS
+		type: MerchantsTypes.MERCHANTS_CREATE_REQUEST_SUCCESS
 	}
 }
 
 export function merchantsCreateError(payload: string): MerchantsCreateErrorAction {
 	return {
 		payload,
-		type: MerchantsTypes.MERCHANTS_DELETE_REQUEST_ERROR
+		type: MerchantsTypes.MERCHANTS_CREATE_REQUEST_ERROR
+	}
+}
+
+export function merchantsDrawerToggle(): MerchantsDrawerToggleAction {
+	return {
+		type: MerchantsTypes.MERCHANTS_DRAWER_TOGGLE
 	}
 }

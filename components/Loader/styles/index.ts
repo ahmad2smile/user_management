@@ -19,7 +19,7 @@ export const styles: any = {
 		height: "100%",
 		position: "relative",
 		top: "45%",
-		left: "50%"
+		left: "40%"
 	},
 	barsContainer: {
 		width: 50,

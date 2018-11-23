@@ -10,14 +10,18 @@ import Table from "../../../components/Table/Table"
 import SelectedBtn from "./SelectedBtn/SelectedBtn"
 import DefaultBtn from "./DefaultBtn/DefaultBtn"
 import DeleteList from "./DeleteList/DeleteList"
+import CreateForm from "./CreateForm/CreateForm"
 
-import { merchantsGetRequest, merchantsDeleteRequest } from "../../../appstate/actions/merchants/merchantsActions"
+import {
+	merchantsGetRequest,
+	merchantsDeleteRequest,
+	merchantsDrawerToggle
+} from "../../../appstate/actions/merchants/merchantsActions"
 
 import { IProps } from "./__types/IProps"
 import { IState } from "./__types/IState"
 
 import { styles } from "./styles"
-import CreateForm from "./CreateForm/CreateForm"
 
 const header: ReadonlyArray<ITableHeader> = [
 	{ id: "firstname", numeric: false, disablePadding: false, label: "Firstname" },
@@ -34,8 +38,7 @@ class Merchants extends React.Component<IProps, IState> {
 		this.state = {
 			selected: [],
 			selectedIds: [],
-			currentPage: 0,
-			drawerState: false
+			currentPage: 0
 		}
 
 		this.toggleDrawer = this.toggleDrawer.bind(this)
@@ -117,33 +120,35 @@ class Merchants extends React.Component<IProps, IState> {
 		})
 
 		this.setState({
-			drawerState: false,
 			selected: [],
 			selectedIds: []
 		})
+
+		this.toggleDrawer()
 	}
 
 	public toggleDrawer() {
-		this.setState(({ drawerState }: IState) => ({
-			drawerState: !drawerState
-		}))
+		const { dispatch } = this.props
+
+		dispatch(merchantsDrawerToggle())
 	}
 
 	public formatData(data: ReadonlyArray<IMerchant>) {
 		return data
 			.map((d: IMerchant) => {
 				// tslint:disable-next-line:readonly-keyword
-				const formatedData: { [k: string]: ITableData | string } = {}
+				const formatedData: { [k: string]: ITableData } = {}
 
 				Object.keys(d)
 					.filter((key: string) => key !== "bids")
 					.filter((key: string) => key !== "avatarUrl")
 					.forEach((k: string) => {
+						// @ts-ignore
 						// tslint:disable-next-line:no-object-mutation
 						formatedData[k] = { value: d[k], component: d[k] }
 					})
 
-				return formatedData as { readonly [key: string]: ITableData }
+				return formatedData
 			})
 			.map(({ id, firstname, lastname, hasPremium, ...rest }) => ({
 				...rest,
@@ -168,12 +173,12 @@ class Merchants extends React.Component<IProps, IState> {
 	}
 
 	public render() {
-		const { merchants, merchantsCount, merchantsGetState, classes } = this.props
-		const { drawerState, selected, selectedIds } = this.state
+		const { merchants, merchantsCount, merchantsGetState, merchantsDrawerState, classes } = this.props
+		const { selected, selectedIds } = this.state
 
 		return (
 			<div className={classes.container}>
-				<Drawer onClose={this.toggleDrawer} isOpen={drawerState} width="wide">
+				<Drawer onClose={this.toggleDrawer} isOpen={merchantsDrawerState} width="wide">
 					{selectedIds.length ? (
 						<DeleteList
 							selected={selected}
@@ -205,5 +210,6 @@ class Merchants extends React.Component<IProps, IState> {
 export default connect(({ merchants }: IRootState) => ({
 	merchants: merchants.merchants,
 	merchantsGetState: merchants.merchantsGetState,
+	merchantsDrawerState: merchants.merchantsDrawerState,
 	merchantsCount: merchants.merchantsCount
 }))(injectSheet(styles)(Merchants))

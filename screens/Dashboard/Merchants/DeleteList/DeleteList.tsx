@@ -15,6 +15,7 @@ const DeleteList = ({ selected, deleteHandler, closeHandler, classes }: IProps) 
 		<div className={classes.list}>
 			{selected.map((m: IMerchant) => (
 				<UserProfile
+					key={m.id}
 					avatarUrl={m.avatarUrl}
 					firstname={m.firstname}
 					lastname={m.lastname}

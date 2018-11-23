@@ -36,6 +36,8 @@ export type MerchantsCreateSuccessAction = IAction<undefined, MerchantsTypes>
 
 export type MerchantsCreateErrorAction = IAction<string, MerchantsTypes>
 
+export type MerchantsDrawerToggleAction = IAction<undefined, MerchantsTypes>
+
 export type MerchantsActions =
 	| MerchantsGetAction
 	| MerchantsGetSuccessAction
@@ -48,3 +50,4 @@ export type MerchantsActions =
 	| MerchantsCreateAction
 	| MerchantsCreateSuccessAction
 	| MerchantsCreateErrorAction
+	| MerchantsDrawerToggleAction
