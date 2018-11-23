@@ -110,7 +110,7 @@ class UpdateForm extends React.Component<IProps, IState> {
 			pristine
 		} = this.props
 
-		return merchantsUpdateState !== API.REQUEST_SUCCESS || pristine ? (
+		return merchantsUpdateState !== API.REQUEST_SUCCESS ? (
 			<MerchantForm
 				buttonText="Update"
 				handleSubmit={handleSubmit(this.submitHandler)}

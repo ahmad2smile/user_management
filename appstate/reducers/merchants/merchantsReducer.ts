@@ -9,7 +9,8 @@ import {
 	MerchantsCreateErrorAction,
 	MerchantsUpdateErrorAction,
 	MerchantGetSelectedSuccessAction,
-	MerchantGetSelectedErrorAction
+	MerchantGetSelectedErrorAction,
+	MerchantsUpdateAction
 } from "../../actions/merchants/__types/IActions"
 
 import { API } from "../../../__typings__/api"
@@ -17,7 +18,40 @@ import { API } from "../../../__typings__/api"
 export const initialState: IMerchants = {
 	merchants: [],
 	merchantsCount: 10,
-	selectedMerchant: {},
+	selectedMerchant: {
+		id: "",
+		avatarUrl: "",
+		firstname: "",
+		lastname: "",
+		email: "",
+		phone: "",
+		hasPremium: false,
+		bids: [
+			{
+				id: "",
+				amount: 0,
+				carTitle: "",
+				created: ""
+			}
+		]
+	},
+	optimisticSelectedMerchant: {
+		id: "",
+		avatarUrl: "",
+		firstname: "",
+		lastname: "",
+		email: "",
+		phone: "",
+		hasPremium: false,
+		bids: [
+			{
+				id: "",
+				amount: 0,
+				carTitle: "",
+				created: ""
+			}
+		]
+	},
 	merchantsGetState: API.NOT_REQUESTED,
 	merchantsGetError: "",
 	merchantsGetSelectedState: API.NOT_REQUESTED,
@@ -114,6 +148,15 @@ export function merchantsReducer(state: IMerchants = initialState, action: Merch
 		case MerchantsTypes.MERCHANTS_UPDATE_REQUEST:
 			return {
 				...state,
+				merchants: state.merchants.map((merchant: IMerchant) => {
+					if (merchant.id === (action as MerchantsUpdateAction).payload.id) {
+						return { ...(action as MerchantsUpdateAction).payload }
+					}
+
+					return merchant
+				}),
+				selectedMerchant: { ...(action as MerchantsUpdateAction).payload },
+				optimisticSelectedMerchant: { ...(state.selectedMerchant as IMerchant) },
 				merchantsUpdateState: API.REQUEST_PENDING
 			}
 		case MerchantsTypes.MERCHANTS_UPDATE_REQUEST_SUCCESS:
@@ -124,8 +167,21 @@ export function merchantsReducer(state: IMerchants = initialState, action: Merch
 		case MerchantsTypes.MERCHANTS_UPDATE_REQUEST_ERROR:
 			return {
 				...state,
+				merchants: state.merchants.map((merchant: IMerchant) => {
+					if (merchant.id === state.optimisticSelectedMerchant.id) {
+						return { ...state.optimisticSelectedMerchant }
+					}
+
+					return merchant
+				}),
+				selectedMerchant: { ...state.optimisticSelectedMerchant },
 				merchantsUpdateError: (action as MerchantsUpdateErrorAction).payload,
 				merchantsUpdateState: API.REQUEST_ERROR
+			}
+		case MerchantsTypes.MERCHANTS_UPDATE_STATE_RESET:
+			return {
+				...state,
+				merchantsUpdateState: API.NOT_REQUESTED
 			}
 		case MerchantsTypes.MERCHANTS_DRAWER_TOGGLE:
 			return {

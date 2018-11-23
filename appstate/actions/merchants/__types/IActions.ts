@@ -59,7 +59,7 @@ export type MerchantsCreateSuccessAction = IAction<undefined, MerchantsTypes>
 export type MerchantsCreateErrorAction = IAction<string, MerchantsTypes>
 
 // -------------------------------------------
-/* -----------------CREATE-------------- */
+/* -----------------UPDATE-------------- */
 // -------------------------------------------
 export interface IMerchantsUpdatePayload extends IMerchant {}
 export type MerchantsUpdateAction = IAction<IMerchantsUpdatePayload, MerchantsTypes>
