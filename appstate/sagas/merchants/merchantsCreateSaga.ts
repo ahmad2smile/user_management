@@ -5,6 +5,7 @@ import {
 	merchantsCreateError,
 	merchantsDrawerToggle
 } from "../../actions/merchants/merchantsActions"
+import { alertOpen } from "../../actions/alert/alertActions"
 
 import { createNewMerchant } from "../../../services/dataService"
 
@@ -20,8 +21,20 @@ export function* merchantsCreateSaga(action: MerchantsCreateAction) {
 
 		yield put(merchantsCreateSuccess())
 		yield put(merchantsDrawerToggle())
+
+		yield put(
+			alertOpen({
+				message: "Merchant created successfully!"
+			})
+		)
 	} catch (err) {
 		yield put(merchantsCreateError(err))
+
+		yield put(
+			alertOpen({
+				message: "Unable to create merchant!"
+			})
+		)
 	}
 }
 

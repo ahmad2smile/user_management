@@ -1,6 +1,7 @@
 import { call, takeLatest, put, select } from "redux-saga/effects"
 
 import { merchantGetSelectedSuccess, merchantGetSelectedError } from "../../actions/merchants/merchantsActions"
+import { alertOpen } from "../../actions/alert/alertActions"
 
 import { getMerchant } from "../../../services/dataService"
 
@@ -25,6 +26,12 @@ export function* merchantGetSelectedSaga(action: MerchantGetSelectedRequestActio
 		yield put(merchantGetSelectedSuccess({ merchant }))
 	} catch (err) {
 		yield put(merchantGetSelectedError(err))
+
+		yield put(
+			alertOpen({
+				message: "Unable to get merchant!"
+			})
+		)
 	}
 }
 

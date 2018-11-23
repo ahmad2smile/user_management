@@ -5,13 +5,13 @@ import {
 	merchantsDeleteSuccess,
 	merchantsDeleteError
 } from "../../actions/merchants/merchantsActions"
+import { alertOpen } from "../../actions/alert/alertActions"
 
 import { deleteMerchant } from "../../../services/dataService"
 
 import { MerchantsTypes } from "../../types/merchantsTypes"
 
 import { MerchantsDeleteAction } from "../../actions/merchants/__types/IActions"
-import { alertOpen } from "../../actions/alert/alertActions"
 
 export function* merchantsDeleteSaga(action: MerchantsDeleteAction) {
 	try {
@@ -22,6 +22,12 @@ export function* merchantsDeleteSaga(action: MerchantsDeleteAction) {
 		yield put(merchantsDeleteSuccess())
 
 		yield put(merchantsGetRequest({}))
+
+		yield put(
+			alertOpen({
+				message: "Deleted successfully!"
+			})
+		)
 	} catch (err) {
 		yield put(merchantsDeleteError(err))
 
