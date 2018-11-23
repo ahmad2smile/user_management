@@ -8,8 +8,9 @@ import { IProps } from "./__types/IProps"
 
 import { styles } from "./styles/"
 import { Colors } from "../../../../theme"
+import ApiSuspense from "../../../../components/ApiSuspense/ApiSuspense"
 
-const DeleteList = ({ selected, deleteHandler, closeHandler, classes }: IProps) => (
+const DeleteList = ({ selected, apiState, deleteHandler, closeHandler, classes }: IProps) => (
 	<div className={classes.container}>
 		<div>Are you sure you want to delete following merchants?</div>
 		<div className={classes.list}>
@@ -26,9 +27,11 @@ const DeleteList = ({ selected, deleteHandler, closeHandler, classes }: IProps) 
 			))}
 		</div>
 		<div className={classes.controls}>
-			<Button onClick={deleteHandler} color={Colors.danger}>
-				Delete
-			</Button>
+			<ApiSuspense apiState={apiState}>
+				<Button onClick={deleteHandler} color={Colors.danger}>
+					Delete
+				</Button>
+			</ApiSuspense>
 			<Button onClick={closeHandler}>Cancel</Button>
 		</div>
 	</div>

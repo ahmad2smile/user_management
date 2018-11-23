@@ -156,7 +156,14 @@ class Merchants extends React.Component<IProps, IState> {
 	}
 
 	public render() {
-		const { merchants, merchantsCount, merchantsGetState, merchantsDrawerState, classes } = this.props
+		const {
+			merchants,
+			merchantsCount,
+			merchantsGetState,
+			merchantsDeleteState,
+			merchantsDrawerState,
+			classes
+		} = this.props
 		const { selected, selectedIds } = this.state
 
 		return (
@@ -164,6 +171,7 @@ class Merchants extends React.Component<IProps, IState> {
 				<Drawer onClose={this.toggleDrawer} isOpen={merchantsDrawerState} width="wide">
 					{selectedIds.length ? (
 						<DeleteList
+							apiState={merchantsDeleteState}
 							selected={selected}
 							deleteHandler={this.deleteHandler}
 							closeHandler={this.toggleDrawer}
@@ -193,6 +201,7 @@ class Merchants extends React.Component<IProps, IState> {
 export default connect(({ merchants }: IRootState) => ({
 	merchants: merchants.merchants,
 	merchantsGetState: merchants.merchantsGetState,
+	merchantsDeleteState: merchants.merchantsDeleteState,
 	merchantsDrawerState: merchants.merchantsDrawerState,
 	merchantsCount: merchants.merchantsCount
 }))(injectSheet(styles)(Merchants))

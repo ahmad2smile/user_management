@@ -6,7 +6,7 @@ const colors = {
 	secondaryLight: "#FFECB3",
 	background: "#BDBDBD",
 	profileBackground: "#BDBDBD",
-	danger: "#C2185B",
+	danger: "#d32f2f",
 	warning: "#FFEB3B",
 	success: "#4CAF50",
 	text: "#212121",

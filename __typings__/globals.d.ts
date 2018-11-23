@@ -1,6 +1,7 @@
 interface IRootState {
 	readonly merchants: IMerchants
 	readonly auth: IAuth
+	readonly alert: IAlert
 }
 
 interface IMerchants {
@@ -63,6 +64,18 @@ interface ITableHeader {
 	readonly numeric: boolean
 	readonly disablePadding: boolean
 	readonly label: string
+}
+
+interface IAlert {
+	readonly alertState: boolean
+	readonly message?: string
+	readonly alertLevel?: AlertLevel
+}
+
+enum AlertLevel {
+	Success = "Success",
+	Warning = "Warning",
+	Error = "Error"
 }
 
 /* ------------------------------------------------- */

@@ -11,6 +11,7 @@ import { deleteMerchant } from "../../../services/dataService"
 import { MerchantsTypes } from "../../types/merchantsTypes"
 
 import { MerchantsDeleteAction } from "../../actions/merchants/__types/IActions"
+import { alertOpen } from "../../actions/alert/alertActions"
 
 export function* merchantsDeleteSaga(action: MerchantsDeleteAction) {
 	try {
@@ -23,6 +24,12 @@ export function* merchantsDeleteSaga(action: MerchantsDeleteAction) {
 		yield put(merchantsGetRequest({}))
 	} catch (err) {
 		yield put(merchantsDeleteError(err))
+
+		yield put(
+			alertOpen({
+				message: "Unable to delete selected merchants!"
+			})
+		)
 	}
 }
 
