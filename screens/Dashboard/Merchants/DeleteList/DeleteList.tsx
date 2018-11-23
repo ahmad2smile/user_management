@@ -12,7 +12,7 @@ import ApiSuspense from "../../../../components/ApiSuspense/ApiSuspense"
 
 const DeleteList = ({ selected, apiState, deleteHandler, closeHandler, classes }: IProps) => (
 	<div className={classes.container}>
-		<div>Are you sure you want to delete following merchants?</div>
+		<div>Are you sure you want to delete following merchant{selected.length > 1 ? "s" : ""}?</div>
 		<div className={classes.list}>
 			{selected.map((m: IMerchant) => (
 				<UserProfile
