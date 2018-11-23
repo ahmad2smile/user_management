@@ -43,7 +43,7 @@ export function getMerchant(id: string) {
 export function deleteMerchant({ id, token }: { readonly [key: string]: string }) {
 	api.defaults.headers = { "x-access-token": token }
 
-	return api.delete(`/merchantsNON/${id}`)
+	return api.delete(`/merchants/${id}`)
 }
 
 export function createNewMerchant({ merchant, token }: { readonly merchant: IMerchant; readonly token: string }) {
