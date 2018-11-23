@@ -9,6 +9,7 @@ import Table from "../../../components/Table/Table"
 import { merchantGetSelectedRequest } from "../../../appstate/actions/merchants/merchantsActions"
 
 import { IProps } from "./__types/IProps"
+import { tableDataFormatter } from "../../../utils/tableDataFormatter"
 
 const header: ReadonlyArray<ITableHeader> = [
 	{ id: "carTitle", numeric: false, disablePadding: false, label: "Car" },
@@ -33,18 +34,7 @@ class UserInfo extends React.Component<IProps> {
 	public onRowsPerPageChange(_page: number, _rowsPerPage: number) {}
 
 	public formatData(data: ReadonlyArray<IBid>) {
-		return data // tslint:disable-next-line:no-any
-			.map((d: any) => {
-				// tslint:disable-next-line:readonly-keyword
-				const formatedData: { [k: string]: ITableData } = {}
-
-				Object.keys(d).forEach((k: string) => {
-					// tslint:disable-next-line:no-object-mutation
-					formatedData[k] = k === "bids" ? d[k] : { value: d[k], component: d[k] }
-				})
-
-				return formatedData
-			})
+		return data.map(tableDataFormatter)
 	}
 
 	public render() {

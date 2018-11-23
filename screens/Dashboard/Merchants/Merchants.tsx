@@ -18,6 +18,8 @@ import {
 	merchantsDrawerToggle
 } from "../../../appstate/actions/merchants/merchantsActions"
 
+import { tableDataFormatter } from "./../../../utils/tableDataFormatter"
+
 import { IProps } from "./__types/IProps"
 import { IState } from "./__types/IState"
 
@@ -135,42 +137,22 @@ class Merchants extends React.Component<IProps, IState> {
 	}
 
 	public formatData(data: ReadonlyArray<IMerchant>) {
-		return data
-			.map((d: IMerchant) => {
-				// tslint:disable-next-line:readonly-keyword
-				const formatedData: { [k: string]: ITableData } = {}
-
-				Object.keys(d)
-					.filter((key: string) => key !== "bids")
-					.filter((key: string) => key !== "avatarUrl")
-					.forEach((k: string) => {
-						// @ts-ignore
-						// tslint:disable-next-line:no-object-mutation
-						formatedData[k] = { value: d[k], component: d[k] }
-					})
-
-				return formatedData
-			})
-			.map(({ id, firstname, lastname, hasPremium, ...rest }) => ({
-				...rest,
-				id,
-				firstname: {
-					...(firstname as ITableData),
-					component: (
-						<Link to={`merchants/${(id as ITableData).value}`}>{(firstname as ITableData).value}</Link>
-					)
-				},
-				lastname: {
-					...(lastname as ITableData),
-					component: (
-						<Link to={`merchants/${(id as ITableData).value}`}>{(lastname as ITableData).value}</Link>
-					)
-				},
-				hasPremium: {
-					...(hasPremium as ITableData),
-					component: <div>{(hasPremium as ITableData).value ? "Premium" : "Trial"}</div>
-				}
-			}))
+		return data.map(tableDataFormatter).map(({ id, firstname, lastname, hasPremium, ...rest }) => ({
+			...rest,
+			id,
+			firstname: {
+				...(firstname as ITableData),
+				component: <Link to={`merchants/${(id as ITableData).value}`}>{(firstname as ITableData).value}</Link>
+			},
+			lastname: {
+				...(lastname as ITableData),
+				component: <Link to={`merchants/${(id as ITableData).value}`}>{(lastname as ITableData).value}</Link>
+			},
+			hasPremium: {
+				...(hasPremium as ITableData),
+				component: <div>{(hasPremium as ITableData).value ? "Premium" : "Trial"}</div>
+			}
+		}))
 	}
 
 	public render() {

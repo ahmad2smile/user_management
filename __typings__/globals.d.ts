@@ -35,7 +35,7 @@ interface IMerchant {
 
 interface ITableData {
 	readonly component: React.ReactNode
-	readonly value: number | string | boolean
+	readonly value: number | string
 }
 
 interface IBid {
