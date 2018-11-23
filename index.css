@@ -13,14 +13,14 @@ body,
 /* https://codepen.io/2kool2/pen/ZpLYYo */
 
 :root {
-	font-size: calc(2rem + ((1vw - 0.48rem) * 1.389));
+	font-size: calc(2rem + ((1vw - 0.48rem) * 1.089));
 	/* .48rem = viewportWidthMinimum /100 */
 	/* 1.389rem = 100 * fontSizeDifference / viewportWidthDifference */
 }
 
 @media (min-width: 48em) {
 	:root {
-		font-size: calc(1rem + ((1vw - 0.48rem) * 1.389));
+		font-size: calc(1rem + ((1vw - 0.48rem) * 1.039));
 	}
 }
 
